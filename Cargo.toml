@@ -1,0 +1,27 @@
+[package]
+name = "tree-sitter-spss"
+description = "A treesitter parser for SPSS syntax code"
+version = "0.1.0"
+authors = ["Quinton Quagliano <Quinton.Quagliano@protonmail.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["incremental", "parsing", "tree-sitter", "spss"]
+categories = ["parsing", "text-editors"]
+repository = "https://github.com/qquagliano/tree-sitter-spss"
+edition = "2021"
+autoexamples = false
+
+build = "bindings/rust/build.rs"
+include = ["bindings/rust/*", "grammar.js", "queries/*", "src/*", "tree-sitter.json"]
+
+[lib]
+path = "bindings/rust/lib.rs"
+
+[dependencies]
+tree-sitter-language = "0.1"
+
+[build-dependencies]
+cc = "1.1.22"
+
+[dev-dependencies]
+tree-sitter = "0.24.6"
