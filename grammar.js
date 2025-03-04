@@ -34,6 +34,7 @@ module.exports = grammar({
       $.equals_assignment
     ),
 
+    // SECTION: ME
     identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
 
     subidentifier: $ => /\s\s\/[A-Za-z_][A-Za-z0-9_]*/,
@@ -41,13 +42,12 @@ module.exports = grammar({
     keyword: $ => /\s[A-Za-z_][A-Za-z0-9_().]*/,
 
     string: $ => /'[^']*'|"[^"]*"/,
-    //
-    // number: $ => /\d+(\.\d+)?/,
 
-    equals_assignment: $ => '=',
+    equals_assignment: $ => token('='),
 
     comment: $ => token(choice(
       seq('*', /[^\n]*/),
+      seq('/*', /[^\n]*/),
       seq('COMMENT', /[^\n]*/)
     ))
   }
