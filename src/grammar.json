@@ -2,12 +2,41 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "spss",
   "rules": {
-    "source_file": {
-      "type": "STRING",
-      "value": "hello"
+    "command": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "([A-Z]+).*?\\."
+        },
+        {
+          "type": "FIELD",
+          "name": "subcommand",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\s\\s\\\\([A-Z]+).*"
+          }
+        }
+      ]
+    },
+    "comment": {
+      "type": "PATTERN",
+      "value": "\\*.*"
+    },
+    "comment_inline": {
+      "type": "PATTERN",
+      "value": "\\/\\*.*"
     }
   },
   "extras": [
+    {
+      "type": "SYMBOL",
+      "name": "comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment_inline"
+    },
     {
       "type": "PATTERN",
       "value": "\\s"

@@ -7,20 +7,29 @@
 module.exports = grammar({
   name: "spss",
 
+  // Extras (for comments and white space)
+  extras: $ => [
+    $.comment,
+    $.comment_inline,
+    /\s/
+  ],
+
   rules: {
-    // Comments
-    comment: $ => seq(),
 
     // Commands
-    command: $ => seq(),
+    command: $ => seq(
+      /([A-Z]+).*?\./,
+      field("subcommand", /\s\s\\([A-Z]+).*/)
+    ),
 
-    // Subcommands
-    subcommand: $ => seq(),
+    // Comments
+    comment: $ => /\*.*/,
+    comment_inline: $ => /\/\*.*/,
 
-    // Strings
-    string: $ => seq(),
-
-    // Numeric
-    numeric: $ => seq()
+    // // Strings
+    // string: $ => seq(),
+    //
+    // // Numeric
+    // numeric: $ => seq()
   }
 });

@@ -1,12 +1,16 @@
 [
   {
-    "type": "source_file",
+    "type": "command",
     "named": true,
     "root": true,
     "fields": {}
   },
   {
-    "type": "hello",
-    "named": false
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "comment_inline",
+    "named": true
   }
 ]
