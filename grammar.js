@@ -16,14 +16,14 @@ module.exports = grammar({
     source_file: $ => repeat($.command),
 
     command: $ => seq(
-      field('command', $.identifier),
+      field('name', $.identifier),
       /\n/,
       repeat($.subcommand),
       /\s\./
     ),
 
     subcommand: $ => seq(
-      field('subcommand', $.subidentifier),
+      field('name', $.subidentifier),
       repeat($.argument),
       /\n/
     ),
@@ -41,8 +41,8 @@ module.exports = grammar({
     keyword: $ => /\s[A-Za-z_][A-Za-z0-9_().]*/,
 
     string: $ => /'[^']*'|"[^"]*"/,
-
-    number: $ => /\d+(\.\d+)?/,
+    //
+    // number: $ => /\d+(\.\d+)?/,
 
     equals_assignment: $ => '=',
 

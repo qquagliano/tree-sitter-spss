@@ -14,7 +14,7 @@
       "members": [
         {
           "type": "FIELD",
-          "name": "command",
+          "name": "name",
           "content": {
             "type": "SYMBOL",
             "name": "identifier"
@@ -42,7 +42,7 @@
       "members": [
         {
           "type": "FIELD",
-          "name": "subcommand",
+          "name": "name",
           "content": {
             "type": "SYMBOL",
             "name": "subidentifier"
@@ -93,10 +93,6 @@
     "string": {
       "type": "PATTERN",
       "value": "'[^']*'|\"[^\"]*\""
-    },
-    "number": {
-      "type": "PATTERN",
-      "value": "\\d+(\\.\\d+)?"
     },
     "equals_assignment": {
       "type": "STRING",

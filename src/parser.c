@@ -11,9 +11,9 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 9
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 2
+#define FIELD_COUNT 1
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
-#define PRODUCTION_ID_COUNT 3
+#define PRODUCTION_ID_COUNT 2
 
 enum ts_symbol_identifiers {
   aux_sym_command_token1 = 1,
@@ -139,26 +139,21 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 };
 
 enum ts_field_identifiers {
-  field_command = 1,
-  field_subcommand = 2,
+  field_name = 1,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
-  [field_command] = "command",
-  [field_subcommand] = "subcommand",
+  [field_name] = "name",
 };
 
 static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [1] = {.index = 0, .length = 1},
-  [2] = {.index = 1, .length = 1},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
   [0] =
-    {field_command, 0},
-  [1] =
-    {field_subcommand, 0},
+    {field_name, 0},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
@@ -822,10 +817,10 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [41] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_command_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
   [44] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_command, 3, 0, 1),
   [46] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_command, 3, 0, 1),
-  [48] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_subcommand, 2, 0, 2),
+  [48] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_subcommand, 2, 0, 1),
   [50] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_command, 4, 0, 1),
   [52] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_command, 4, 0, 1),
-  [54] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_subcommand, 3, 0, 2),
+  [54] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_subcommand, 3, 0, 1),
   [56] = {.entry = {.count = 1, .reusable = true}}, SHIFT(6),
   [58] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
 };
