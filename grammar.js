@@ -7,29 +7,48 @@
 module.exports = grammar({
   name: "spss",
 
-  // Extras (for comments and white space)
   extras: $ => [
     $.comment,
-    $.comment_inline,
     /\s/
   ],
 
   rules: {
+    source_file: $ => repeat($.command),
 
-    // Commands
     command: $ => seq(
-      /([A-Z]+).*?\./,
-      field("subcommand", /\s\s\\([A-Z]+).*/)
+      field('command', $.identifier),
+      /\n/,
+      repeat($.subcommand),
+      /\s\./
     ),
 
-    // Comments
-    comment: $ => /\*.*/,
-    comment_inline: $ => /\/\*.*/,
+    subcommand: $ => seq(
+      field('subcommand', $.subidentifier),
+      repeat($.argument),
+      /\n/
+    ),
 
-    // // Strings
-    // string: $ => seq(),
-    //
-    // // Numeric
-    // numeric: $ => seq()
+    argument: $ => choice(
+      $.keyword,
+      $.string,
+      $.equals_assignment
+    ),
+
+    identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
+
+    subidentifier: $ => /\s\s\/[A-Za-z_][A-Za-z0-9_]*/,
+
+    keyword: $ => /\s[A-Za-z_][A-Za-z0-9_().]*/,
+
+    string: $ => /'[^']*'|"[^"]*"/,
+
+    number: $ => /\d+(\.\d+)?/,
+
+    equals_assignment: $ => '=',
+
+    comment: $ => token(choice(
+      seq('*', /[^\n]*/),
+      seq('COMMENT', /[^\n]*/)
+    ))
   }
 });

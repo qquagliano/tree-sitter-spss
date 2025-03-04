@@ -4,9 +4,12 @@
       "name": "spss",
       "camelcase": "Spss",
       "scope": "source.spss",
+      "path": ".",
       "file-types": [
+        "sps",
         ".sps"
       ],
+      "highlights": "queries/highlights.scm",
       "injection-regex": "^spss$"
     }
   ],
@@ -32,5 +35,11 @@
     "python": true,
     "rust": true,
     "swift": true
+  },
+  "theme": {
+    "keyword": "purple",
+    "function": "blue",
+    "type": "green",
+    "number": "brown"
   }
 }

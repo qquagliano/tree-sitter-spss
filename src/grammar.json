@@ -2,40 +2,145 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "spss",
   "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "command"
+      }
+    },
     "command": {
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "([A-Z]+).*?\\."
+          "type": "FIELD",
+          "name": "command",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
+        {
+          "type": "PATTERN",
+          "value": "\\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "subcommand"
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\s\\."
+        }
+      ]
+    },
+    "subcommand": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "FIELD",
           "name": "subcommand",
           "content": {
-            "type": "PATTERN",
-            "value": "\\s\\s\\\\([A-Z]+).*"
+            "type": "SYMBOL",
+            "name": "subidentifier"
           }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "argument"
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\n"
         }
       ]
     },
-    "comment": {
-      "type": "PATTERN",
-      "value": "\\*.*"
+    "argument": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "keyword"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "equals_assignment"
+        }
+      ]
     },
-    "comment_inline": {
+    "identifier": {
       "type": "PATTERN",
-      "value": "\\/\\*.*"
+      "value": "[A-Za-z_][A-Za-z0-9_]*"
+    },
+    "subidentifier": {
+      "type": "PATTERN",
+      "value": "\\s\\s\\/[A-Za-z_][A-Za-z0-9_]*"
+    },
+    "keyword": {
+      "type": "PATTERN",
+      "value": "\\s[A-Za-z_][A-Za-z0-9_().]*"
+    },
+    "string": {
+      "type": "PATTERN",
+      "value": "'[^']*'|\"[^\"]*\""
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+(\\.\\d+)?"
+    },
+    "equals_assignment": {
+      "type": "STRING",
+      "value": "="
+    },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "*"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^\\n]*"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "COMMENT"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^\\n]*"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   "extras": [
     {
       "type": "SYMBOL",
       "name": "comment"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "comment_inline"
     },
     {
       "type": "PATTERN",
