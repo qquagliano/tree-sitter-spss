@@ -38,8 +38,8 @@
   },
   "theme": {
     "base": "white",
-    "subcommand": "blue",
     "command": "purple",
+    "subcommand": "blue",
     "string": "green",
     "comment": "grey",
     "number": "orange"
