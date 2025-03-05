@@ -80,6 +80,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "parenthetical"
+        },
+        {
+          "type": "SYMBOL",
           "name": "subcmd_variable"
         },
         {
@@ -98,22 +102,45 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[A-Z_][A-Z0-9_()]*"
+      "value": "[A-Z_][A-Z0-9_]*"
     },
     "subidentifier": {
       "type": "PATTERN",
-      "value": "\\/[A-Z_][A-Z0-9_()]*"
+      "value": "\\/[A-Z_][A-Z0-9_]*"
     },
     "keyword": {
       "type": "PATTERN",
-      "value": "[A-Z_][A-Z0-9_()]*"
+      "value": "[A-Z_][A-Z0-9_]*"
+    },
+    "parenthetical": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "("
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "argument"
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ")"
+          }
+        }
+      ]
     },
     "cmd_variable": {
       "type": "PREC",
       "value": 1,
       "content": {
         "type": "PATTERN",
-        "value": "[A-Za-z_][A-Za-z0-9_()]*"
+        "value": "[A-Za-z_][A-Za-z0-9_]*"
       }
     },
     "subcmd_variable": {
@@ -121,7 +148,7 @@
       "value": 2,
       "content": {
         "type": "PATTERN",
-        "value": "[A-Za-z_][A-Za-z0-9_()]*"
+        "value": "[A-Za-z_][A-Za-z0-9_]*"
       }
     },
     "string": {

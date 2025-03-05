@@ -20,6 +20,10 @@
           "named": true
         },
         {
+          "type": "parenthetical",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -80,6 +84,21 @@
     "fields": {}
   },
   {
+    "type": "parenthetical",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "argument",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -125,6 +144,14 @@
         }
       ]
     }
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
   },
   {
     "type": "comment",

@@ -4,7 +4,7 @@ REGRESSION
   /CRITERIA = PIN(.05) POUT(.10) /* test comment 1
   /NOORIGIN "testing a string"
   /DEPENDENT api00
-  /METHOD = ENTER acs_k3 .
+  /METHOD = ENTER acs_k3.
 
 *test comment 2
 
