@@ -16,11 +16,24 @@
           "named": true
         },
         {
+          "type": "number",
+          "named": true
+        },
+        {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "subcmd_variable",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "cmd_variable",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "command",
@@ -42,11 +55,29 @@
       "required": false,
       "types": [
         {
+          "type": "cmd_variable",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        },
+        {
           "type": "subcommand",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "keyword",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "source_file",
@@ -63,6 +94,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "subcmd_variable",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "subcommand",
@@ -99,11 +135,7 @@
     "named": true
   },
   {
-    "type": "identifier",
-    "named": true
-  },
-  {
-    "type": "keyword",
+    "type": "number",
     "named": true
   },
   {

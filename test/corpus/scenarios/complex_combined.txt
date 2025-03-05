@@ -1,0 +1,94 @@
+==================
+Complex combined
+==================
+
+FILTER BY Keep.
+FILTER OFF.
+
+DATASET ACTIVATE DataSet1.
+
+ADD FILES /FILE='DataSet1'
+  /FILE='DataSet2'
+  /IN=Sample.
+
+GET
+  /TEST1
+  /TEST2.
+
+COMMENT 1.
+
+GET
+  /TEST1 /* comment 2
+  /TEST2.
+
+* Comment 3
+
+---
+
+(source_file
+ (command
+  (identifier)
+  (keyword)
+  (cmd_variable)
+ )
+ (command
+  (identifier)
+  (keyword)
+ )
+ (command
+  (identifier)
+  (keyword)
+  (cmd_variable)
+ )
+ (command
+  (identifier)
+  (keyword)
+  (subcommand
+   (subidentifier)
+   (argument
+    (equals_assignment)
+   )
+   (argument
+    (string)
+   )
+  )
+  (subcommand
+   (subidentifier)
+   (argument
+    (equals_assignment)
+   )
+   (argument
+    (string)
+   )
+  )
+  (subcommand
+   (subidentifier)
+   (argument
+    (equals_assignment)
+    (subcmd_variable)
+   )
+  )
+ )
+ (command
+  (identifier)
+  (subcommand
+   (subidentifier)
+  )
+  (subcommand
+   (subidentifier)
+  )
+ ) 
+ (comment)
+ (command
+  (identifier)
+  (subcommand
+   (subidentifier)
+  )
+  (comment)
+  (subcommand
+   (subidentifier)
+  )
+ )
+  (comment)
+) 
+

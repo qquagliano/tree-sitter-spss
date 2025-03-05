@@ -1,0 +1,34 @@
+==================
+Multi-line multi-subcommand command
+==================
+
+GET
+  /TEST1
+  /TEST2.
+
+GET
+  /TEST1
+  /TEST2.
+
+---
+
+(source_file
+ (command
+  (identifier)
+  (subcommand
+   (subidentifier)
+  )
+  (subcommand
+   (subidentifier)
+  )
+ ) 
+ (command
+  (identifier)
+  (subcommand
+   (subidentifier)
+  )
+  (subcommand
+   (subidentifier)
+  )
+ ) 
+)

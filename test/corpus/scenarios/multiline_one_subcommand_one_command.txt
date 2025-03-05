@@ -1,0 +1,17 @@
+==================
+Multi-line one subcommand command
+==================
+
+GET
+  /TEST.
+
+---
+
+(source_file
+ (command
+  (identifier)
+  (subcommand
+   (subidentifier)
+  )
+ ) 
+)

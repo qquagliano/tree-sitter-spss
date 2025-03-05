@@ -1,0 +1,15 @@
+==================
+Inline multi-keyword command
+==================
+
+GET DATA FAST.
+
+---
+
+(source_file
+ (command
+  (identifier)
+  (keyword)
+  (keyword)
+  )
+)

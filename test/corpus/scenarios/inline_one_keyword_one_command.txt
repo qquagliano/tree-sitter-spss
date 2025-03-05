@@ -1,0 +1,14 @@
+==================
+Inline one keyword command
+==================
+
+GET DATA.
+
+---
+
+(source_file
+ (command
+  (identifier)
+  (keyword)
+  )
+)

@@ -1,0 +1,15 @@
+==================
+Comments
+==================
+
+* test comment 1
+/* test comment 2
+COMMENT test comment 3.
+
+---
+
+(source_file
+ (comment)
+ (comment)
+ (comment)
+)
