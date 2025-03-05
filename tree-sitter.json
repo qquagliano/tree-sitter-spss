@@ -10,7 +10,7 @@
         ".sps"
       ],
       "highlights": "queries/highlights.scm",
-      "injection-regex": "spss"
+      "injection-regex": "^spss$"
     }
   ],
   "metadata": {
@@ -35,5 +35,5 @@
     "python": true,
     "rust": true,
     "swift": true
-  },
+  }
 }
