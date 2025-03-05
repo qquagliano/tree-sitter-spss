@@ -10,7 +10,7 @@
         ".sps"
       ],
       "highlights": "queries/highlights.scm",
-      "injection-regex": "spss$"
+      "injection-regex": "spss"
     }
   ],
   "metadata": {
@@ -37,9 +37,9 @@
     "swift": true
   },
   "theme": {
-    "base": "white",
-    "command": "purple",
-    "subcommand": "blue",
+    "keyword": "white",
+    "function.call": "purple",
+    "function.method.call": "blue",
     "string": "green",
     "comment": "grey",
     "number": "orange"

@@ -1,11 +1,11 @@
-(parenthetical) @base
-(equals_assignment) @base
-(cmd_variable) @base
-(subcmd_variable) @base
-(keyword) @base
+(parenthetical) @keyword
+(equals_assignment) @keyword
+(cmd_variable) @keyword
+(subcmd_variable) @keyword
+(keyword) @keyword
 
-(command name: (identifier) @command)
-(subcommand name: (subidentifier) @subcommand)
+(command name: (identifier) @function.call)
+(subcommand name: (subidentifier) @function.method.call)
 
 (string) @string
 (number) @number
