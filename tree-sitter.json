@@ -37,9 +37,9 @@
     "swift": true
   },
   "theme": {
-    "keyword": "white",
-    "function": "purple",
-    "function.method": "blue",
+    "base": "white",
+    "subcommand": "blue",
+    "command": "purple",
     "string": "green",
     "comment": "grey",
     "number": "orange"
