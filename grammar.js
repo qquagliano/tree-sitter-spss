@@ -18,7 +18,7 @@ module.exports = grammar({
     command: $ => seq(
       field('name', $.identifier),
       repeat($.keyword),
-      choice(repeat($.subcommand), repeat($.cmd_variable)),
+      choice(repeat($.subcommand), repeat($.cmd_variable), repeat($.string)),
       /\.\n/
     ),
 

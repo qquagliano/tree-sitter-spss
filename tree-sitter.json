@@ -39,7 +39,8 @@
   "theme": {
     "keyword": "purple",
     "function": "blue",
-    "type": "green",
-    "number": "brown"
+    "string": "green",
+    "comment": "grey",
+    "number": "orange"
   }
 }

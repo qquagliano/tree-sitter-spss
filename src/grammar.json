@@ -43,6 +43,13 @@
                 "type": "SYMBOL",
                 "name": "cmd_variable"
               }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "string"
+              }
             }
           ]
         },

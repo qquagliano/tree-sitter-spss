@@ -67,6 +67,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "subcommand",
           "named": true
         }

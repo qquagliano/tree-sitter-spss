@@ -10,9 +10,11 @@ FILE 'single quote string'.
 
 (source_file
  (command
+  (identifier)
   (string)
  )
  (command
+  (identifier)
   (string)
  )
 )
