@@ -28,18 +28,23 @@
           }
         },
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "subcommand"
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "cmd_variable"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "subcommand"
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "cmd_variable"
+              }
+            }
+          ]
         },
         {
           "type": "PATTERN",
@@ -136,20 +141,12 @@
       ]
     },
     "cmd_variable": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "PATTERN",
-        "value": "[A-Za-z_][A-Za-z0-9_]*"
-      }
+      "type": "PATTERN",
+      "value": "[A-Za-z_][A-Za-z0-9_]*"
     },
     "subcmd_variable": {
-      "type": "PREC",
-      "value": 2,
-      "content": {
-        "type": "PATTERN",
-        "value": "[A-Za-z_][A-Za-z0-9_]*"
-      }
+      "type": "PATTERN",
+      "value": "[A-Za-z_][A-Za-z0-9_]*"
     },
     "string": {
       "type": "PATTERN",

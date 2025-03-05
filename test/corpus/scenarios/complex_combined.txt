@@ -65,6 +65,8 @@ GET
    (subidentifier)
    (argument
     (equals_assignment)
+   )
+   (argument
     (subcmd_variable)
    )
   )

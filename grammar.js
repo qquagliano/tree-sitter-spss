@@ -4,8 +4,6 @@
  * @license MIT
  */
 
-// TODO: Settle precedence difficulty with command and subcommand level variables
-
 module.exports = grammar({
   name: "spss",
 
@@ -20,14 +18,13 @@ module.exports = grammar({
     command: $ => seq(
       field('name', $.identifier),
       repeat($.keyword),
-      repeat($.subcommand),
-      repeat($.cmd_variable),
+      choice(repeat($.subcommand), repeat($.cmd_variable)),
       /\.\n/
     ),
 
     subcommand: $ => prec.left(seq(
       field('name', $.subidentifier),
-      repeat($.argument)
+      repeat($.argument),
     )),
 
     argument: $ => choice(

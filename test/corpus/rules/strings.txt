@@ -1,0 +1,18 @@
+==================
+Strings
+==================
+
+GET "double quote string".
+
+FILE 'single quote string'.
+
+---
+
+(source_file
+ (command
+  (string)
+ )
+ (command
+  (string)
+ )
+)
