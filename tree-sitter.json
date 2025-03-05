@@ -36,12 +36,4 @@
     "rust": true,
     "swift": true
   },
-  "theme": {
-    "keyword": "white",
-    "function.call": "purple",
-    "function.method.call": "blue",
-    "string": "green",
-    "comment": "grey",
-    "number": "orange"
-  }
 }
