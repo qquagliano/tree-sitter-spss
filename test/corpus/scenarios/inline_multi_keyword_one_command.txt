@@ -9,7 +9,9 @@ GET DATA FAST.
 (source_file
  (command
   (identifier)
-  (keyword)
-  (keyword)
+  (cmd_arguments
+   (keyword)
+   (keyword)
+  )
   )
 )

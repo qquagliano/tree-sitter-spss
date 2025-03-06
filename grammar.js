@@ -17,34 +17,43 @@ module.exports = grammar({
 
     command: $ => seq(
       field('name', $.identifier),
-      repeat($.keyword),
-      choice(repeat($.subcommand), repeat($.cmd_variable), repeat($.string)),
+      optional($.cmd_arguments),
+      optional(repeat($.subcommand)),
       /\.\n/
     ),
 
-    subcommand: $ => prec.left(seq(
-      field('name', $.subidentifier),
-      repeat($.argument),
+    cmd_arguments: $ => repeat1(choice(
+      $.keyword,
+      $.parenthetical,
+      $.cmd_variable,
+      $.string,
+      $.number,
+      $.equals_assignment
     )),
 
-    argument: $ => choice(
+    subcommand: $ => prec.left(seq(
+      field('name', $.subidentifier),
+      optional($.subcmd_arguments)
+    )),
+
+    subcmd_arguments: $ => repeat1(choice(
       $.keyword,
       $.parenthetical,
       $.subcmd_variable,
       $.string,
       $.number,
       $.equals_assignment
-    ),
+    )),
 
     identifier: $ => /[A-Z_][A-Z0-9_]*/,
 
     subidentifier: $ => /\/[A-Z_][A-Z0-9_]*/,
 
-    keyword: $ => /[A-Z_][A-Z0-9_]*/,
+    keyword: $ => /[A-Z_$][A-Z0-9_$]*/,
 
     parenthetical: $ => seq(
       token("("),
-      $.argument,
+      choice($.subcmd_arguments),
       token(")")
     ),
 

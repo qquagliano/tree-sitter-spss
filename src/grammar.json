@@ -21,11 +21,16 @@
           }
         },
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "keyword"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmd_arguments"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -38,18 +43,7 @@
               }
             },
             {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "cmd_variable"
-              }
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "string"
-              }
+              "type": "BLANK"
             }
           ]
         },
@@ -58,6 +52,38 @@
           "value": "\\.\\n"
         }
       ]
+    },
+    "cmd_arguments": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "keyword"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "parenthetical"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "cmd_variable"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "string"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "number"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "equals_assignment"
+          }
+        ]
+      }
     },
     "subcommand": {
       "type": "PREC_LEFT",
@@ -74,43 +100,51 @@
             }
           },
           {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "argument"
-            }
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "subcmd_arguments"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         ]
       }
     },
-    "argument": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "keyword"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "parenthetical"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "subcmd_variable"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "number"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "equals_assignment"
-        }
-      ]
+    "subcmd_arguments": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "keyword"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "parenthetical"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "subcmd_variable"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "string"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "number"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "equals_assignment"
+          }
+        ]
+      }
     },
     "identifier": {
       "type": "PATTERN",
@@ -122,7 +156,7 @@
     },
     "keyword": {
       "type": "PATTERN",
-      "value": "[A-Z_][A-Z0-9_]*"
+      "value": "[A-Z_$][A-Z0-9_$]*"
     },
     "parenthetical": {
       "type": "SEQ",
@@ -135,8 +169,13 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "argument"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "subcmd_arguments"
+            }
+          ]
         },
         {
           "type": "TOKEN",

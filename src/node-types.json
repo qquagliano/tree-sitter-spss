@@ -1,12 +1,16 @@
 [
   {
-    "type": "argument",
+    "type": "cmd_arguments",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "cmd_variable",
+          "named": true
+        },
         {
           "type": "equals_assignment",
           "named": true
@@ -25,10 +29,6 @@
         },
         {
           "type": "string",
-          "named": true
-        },
-        {
-          "type": "subcmd_variable",
           "named": true
         }
       ]
@@ -59,15 +59,7 @@
       "required": false,
       "types": [
         {
-          "type": "cmd_variable",
-          "named": true
-        },
-        {
-          "type": "keyword",
-          "named": true
-        },
-        {
-          "type": "string",
+          "type": "cmd_arguments",
           "named": true
         },
         {
@@ -78,16 +70,6 @@
     }
   },
   {
-    "type": "identifier",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "parenthetical",
     "named": true,
     "fields": {},
@@ -96,7 +78,7 @@
       "required": true,
       "types": [
         {
-          "type": "argument",
+          "type": "subcmd_arguments",
           "named": true
         }
       ]
@@ -113,6 +95,41 @@
       "types": [
         {
           "type": "command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "subcmd_arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "equals_assignment",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthetical",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "subcmd_variable",
           "named": true
         }
       ]
@@ -139,11 +156,11 @@
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
-          "type": "argument",
+          "type": "subcmd_arguments",
           "named": true
         }
       ]
@@ -163,6 +180,14 @@
   },
   {
     "type": "equals_assignment",
+    "named": true
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "keyword",
     "named": true
   },
   {

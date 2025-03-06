@@ -9,6 +9,8 @@ GET DATA.
 (source_file
  (command
   (identifier)
-  (keyword)
+  (cmd_arguments
+   (keyword)
+  )
   )
 )

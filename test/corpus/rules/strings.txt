@@ -11,10 +11,14 @@ FILE 'single quote string'.
 (source_file
  (command
   (identifier)
-  (string)
+  (cmd_arguments
+   (string)
+  )
  )
  (command
   (identifier)
-  (string)
+  (cmd_arguments
+   (string)
+  )
  )
 )
