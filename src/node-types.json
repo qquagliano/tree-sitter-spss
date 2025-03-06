@@ -1,16 +1,12 @@
 [
   {
-    "type": "cmd_arguments",
+    "type": "arguments",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "cmd_variable",
-          "named": true
-        },
         {
           "type": "equals_assignment",
           "named": true
@@ -30,14 +26,13 @@
         {
           "type": "string",
           "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
         }
       ]
     }
-  },
-  {
-    "type": "cmd_variable",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "command",
@@ -59,7 +54,7 @@
       "required": false,
       "types": [
         {
-          "type": "cmd_arguments",
+          "type": "arguments",
           "named": true
         },
         {
@@ -78,7 +73,7 @@
       "required": true,
       "types": [
         {
-          "type": "subcmd_arguments",
+          "type": "arguments",
           "named": true
         }
       ]
@@ -101,46 +96,6 @@
     }
   },
   {
-    "type": "subcmd_arguments",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "equals_assignment",
-          "named": true
-        },
-        {
-          "type": "keyword",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "parenthetical",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "subcmd_variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "subcmd_variable",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "subcommand",
     "named": true,
     "fields": {
@@ -160,7 +115,7 @@
       "required": false,
       "types": [
         {
-          "type": "subcmd_arguments",
+          "type": "arguments",
           "named": true
         }
       ]
@@ -200,6 +155,10 @@
   },
   {
     "type": "subidentifier",
+    "named": true
+  },
+  {
+    "type": "variable",
     "named": true
   }
 ]

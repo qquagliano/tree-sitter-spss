@@ -25,7 +25,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "cmd_arguments"
+              "name": "arguments"
             },
             {
               "type": "BLANK"
@@ -53,38 +53,6 @@
         }
       ]
     },
-    "cmd_arguments": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "keyword"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "parenthetical"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "cmd_variable"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "string"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "number"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "equals_assignment"
-          }
-        ]
-      }
-    },
     "subcommand": {
       "type": "PREC_LEFT",
       "value": 0,
@@ -104,7 +72,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "subcmd_arguments"
+                "name": "arguments"
               },
               {
                 "type": "BLANK"
@@ -114,7 +82,7 @@
         ]
       }
     },
-    "subcmd_arguments": {
+    "arguments": {
       "type": "REPEAT1",
       "content": {
         "type": "CHOICE",
@@ -129,7 +97,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "subcmd_variable"
+            "name": "variable"
           },
           {
             "type": "SYMBOL",
@@ -146,6 +114,29 @@
         ]
       }
     },
+    "parenthetical": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "("
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arguments"
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ")"
+          }
+        }
+      ]
+    },
     "identifier": {
       "type": "PATTERN",
       "value": "[A-Z_][A-Z0-9_]*"
@@ -158,39 +149,7 @@
       "type": "PATTERN",
       "value": "[A-Z_$][A-Z0-9_$]*"
     },
-    "parenthetical": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": "("
-          }
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "subcmd_arguments"
-            }
-          ]
-        },
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": ")"
-          }
-        }
-      ]
-    },
-    "cmd_variable": {
-      "type": "PATTERN",
-      "value": "[A-Za-z_][A-Za-z0-9_]*"
-    },
-    "subcmd_variable": {
+    "variable": {
       "type": "PATTERN",
       "value": "[A-Za-z_][A-Za-z0-9_]*"
     },

@@ -28,48 +28,48 @@ GET
 (source_file
  (command
   (identifier)
-  (cmd_arguments
+  (arguments
     (keyword)
-    (cmd_variable)
+    (variable)
   )
  )
  (command
   (identifier)
-  (cmd_arguments
+  (arguments
    (keyword)
   )
  )
  (command
   (identifier)
-  (cmd_arguments
+  (arguments
    (keyword)
-   (cmd_variable)
+   (variable)
   )
  )
  (command
   (identifier)
-  (cmd_arguments
+  (arguments
    (keyword)
   )
   (subcommand
    (subidentifier)
-   (subcmd_arguments
+   (arguments
     (equals_assignment)
     (string)
    )
   )
   (subcommand
    (subidentifier)
-   (subcmd_arguments
+   (arguments
     (equals_assignment)
     (string)
    )
   )
   (subcommand
    (subidentifier)
-   (subcmd_arguments
+   (arguments
     (equals_assignment)
-    (subcmd_variable)
+    (variable)
    )
   )
  )
