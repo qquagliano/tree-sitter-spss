@@ -109,6 +109,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "arithmetic"
+          },
+          {
+            "type": "SYMBOL",
             "name": "equals_assignment"
           }
         ]
@@ -139,19 +143,19 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[A-Z_][A-Z0-9_]*"
+      "value": "[A-Z_-][A-Z0-9_-]*"
     },
     "subidentifier": {
       "type": "PATTERN",
-      "value": "\\/[A-Z_][A-Z0-9_]*"
+      "value": "\\/[A-Z_-][A-Z0-9_-]*"
     },
     "keyword": {
       "type": "PATTERN",
-      "value": "[A-Z_$][A-Z0-9_$]*"
+      "value": "[A-Z_\\-$][A-Z0-9_\\-$]*"
     },
     "variable": {
       "type": "PATTERN",
-      "value": "[A-Za-z_][A-Za-z0-9_]*"
+      "value": "[A-Za-z_-][A-Za-z0-9_-]*"
     },
     "string": {
       "type": "PATTERN",
@@ -168,6 +172,39 @@
         "value": "="
       }
     },
+    "arithmetic": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "<"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ">"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "*"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ","
+          }
+        }
+      ]
+    },
     "comment": {
       "type": "TOKEN",
       "content": {
@@ -177,8 +214,8 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "STRING",
-                "value": "*"
+                "type": "PATTERN",
+                "value": "\\* "
               },
               {
                 "type": "PATTERN",
@@ -190,8 +227,8 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "STRING",
-                "value": "/*"
+                "type": "PATTERN",
+                "value": "\\/\\* "
               },
               {
                 "type": "PATTERN",

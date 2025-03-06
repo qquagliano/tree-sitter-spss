@@ -8,6 +8,10 @@
       "required": true,
       "types": [
         {
+          "type": "arithmetic",
+          "named": true
+        },
+        {
           "type": "equals_assignment",
           "named": true
         },
@@ -33,6 +37,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "arithmetic",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "command",
@@ -127,6 +136,22 @@
   },
   {
     "type": ")",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": ">",
     "named": false
   },
   {

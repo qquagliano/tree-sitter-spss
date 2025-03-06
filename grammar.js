@@ -33,6 +33,7 @@ module.exports = grammar({
       $.variable,
       $.string,
       $.number,
+      $.arithmetic,
       $.equals_assignment
     )),
 
@@ -42,13 +43,13 @@ module.exports = grammar({
       token(")")
     ),
 
-    identifier: $ => /[A-Z_][A-Z0-9_]*/,
+    identifier: $ => /[A-Z_-][A-Z0-9_-]*/,
 
-    subidentifier: $ => /\/[A-Z_][A-Z0-9_]*/,
+    subidentifier: $ => /\/[A-Z_-][A-Z0-9_-]*/,
 
-    keyword: $ => /[A-Z_$][A-Z0-9_$]*/,
+    keyword: $ => /[A-Z_\-$][A-Z0-9_\-$]*/,
 
-    variable: $ => /[A-Za-z_][A-Za-z0-9_]*/,
+    variable: $ => /[A-Za-z_-][A-Za-z0-9_-]*/,
 
     string: $ => /'[^']*'|"[^"]*"/,
 
@@ -56,9 +57,16 @@ module.exports = grammar({
 
     equals_assignment: $ => token('='),
 
+    arithmetic: $ => choice(
+      token("<"),
+      token(">"),
+      token("*"),
+      token(",")
+    ),
+
     comment: $ => token(choice(
-      seq('*', /[^\n]*/),
-      seq('/*', /[^\n]*/),
+      seq(/\* /, /[^\n]*/),
+      seq(/\/\* /, /[^\n]*/),
       seq('COMMENT', /[^\n]*/)
     ))
   }
