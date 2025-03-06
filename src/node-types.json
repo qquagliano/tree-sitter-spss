@@ -12,11 +12,19 @@
           "named": true
         },
         {
-          "type": "equals_assignment",
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "comparison",
           "named": true
         },
         {
           "type": "keyword",
+          "named": true
+        },
+        {
+          "type": "logical",
           "named": true
         },
         {
@@ -74,15 +82,57 @@
     }
   },
   {
+    "type": "comparison",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "logical",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "parenthetical",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "arguments",
+          "type": "arithmetic",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "comparison",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        },
+        {
+          "type": "logical",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthetical",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "variable",
           "named": true
         }
       ]
@@ -131,6 +181,10 @@
     }
   },
   {
+    "type": "&",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -143,7 +197,19 @@
     "named": false
   },
   {
-    "type": ",",
+    "type": "**",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "/",
     "named": false
   },
   {
@@ -151,15 +217,31 @@
     "named": false
   },
   {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "<>",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": ">",
     "named": false
   },
   {
-    "type": "comment",
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": "comma",
     "named": true
   },
   {
-    "type": "equals_assignment",
+    "type": "comment",
     "named": true
   },
   {
@@ -185,5 +267,9 @@
   {
     "type": "variable",
     "named": true
+  },
+  {
+    "type": "|",
+    "named": false
   }
 ]

@@ -6,6 +6,6 @@ REGRESSION
   /DEPENDENT api00
   /METHOD = ENTER acs_k3.
 
-*test comment 2
+* test comment 2
 
 COMMENT test 3 .

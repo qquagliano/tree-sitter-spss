@@ -113,7 +113,15 @@
           },
           {
             "type": "SYMBOL",
-            "name": "equals_assignment"
+            "name": "comparison"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "logical"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comma"
           }
         ]
       }
@@ -129,8 +137,48 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "arguments"
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "keyword"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "parenthetical"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "variable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "string"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "number"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "arithmetic"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "comparison"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "logical"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "comma"
+              }
+            ]
+          }
         },
         {
           "type": "TOKEN",
@@ -143,19 +191,19 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[A-Z_-][A-Z0-9_-]*"
+      "value": "[A-Z0-9_\\-][A-Z0-9_\\-]*"
     },
     "subidentifier": {
       "type": "PATTERN",
-      "value": "\\/[A-Z_-][A-Z0-9_-]*"
+      "value": "\\/[A-Z0-9_\\-][A-Z0-9_\\-]*"
     },
     "keyword": {
       "type": "PATTERN",
-      "value": "[A-Z_\\-$][A-Z0-9_\\-$]*"
+      "value": "[A-Z0-9_\\-$][A-Z0-9_\\-$]*"
     },
     "variable": {
       "type": "PATTERN",
-      "value": "[A-Za-z_-][A-Za-z0-9_-]*"
+      "value": "[A-Za-z0-9_\\-][A-Za-z0-9_\\-]*"
     },
     "string": {
       "type": "PATTERN",
@@ -165,14 +213,47 @@
       "type": "PATTERN",
       "value": "-?(\\d+(\\.\\d*)?|\\.\\d+)"
     },
-    "equals_assignment": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "="
-      }
-    },
     "arithmetic": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "+"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "-"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "*"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "/"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "**"
+          }
+        }
+      ]
+    },
+    "comparison": {
       "type": "CHOICE",
       "members": [
         {
@@ -193,17 +274,57 @@
           "type": "TOKEN",
           "content": {
             "type": "STRING",
-            "value": "*"
+            "value": "="
           }
         },
         {
           "type": "TOKEN",
           "content": {
             "type": "STRING",
-            "value": ","
+            "value": "<>"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "<="
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ">="
           }
         }
       ]
+    },
+    "logical": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "&"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "|"
+          }
+        }
+      ]
+    },
+    "comma": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": ","
+      }
     },
     "comment": {
       "type": "TOKEN",

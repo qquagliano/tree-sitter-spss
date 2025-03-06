@@ -54,21 +54,21 @@ GET
   (subcommand
    (subidentifier)
    (arguments
-    (equals_assignment)
+    (comparison)
     (string)
    )
   )
   (subcommand
    (subidentifier)
    (arguments
-    (equals_assignment)
+    (comparison)
     (string)
    )
   )
   (subcommand
    (subidentifier)
    (arguments
-    (equals_assignment)
+    (comparison)
     (variable)
    )
   )
