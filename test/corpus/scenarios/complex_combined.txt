@@ -44,16 +44,12 @@ GET
  (command
   (identifier)
   (arguments
-   (keyword)
    (variable)
   )
   (end_of_command)
  )
  (command
   (identifier)
-  (arguments
-   (keyword)
-  )
   (subcommand
    (subidentifier)
    (arguments

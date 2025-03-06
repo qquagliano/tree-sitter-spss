@@ -11,7 +11,6 @@ GET DATA FAST.
   (identifier)
   (arguments
    (keyword)
-   (keyword)
   )
   (end_of_command)
   )

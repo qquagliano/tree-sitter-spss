@@ -2,9 +2,9 @@
 Strings
 ==================
 
-GET "double quote string".
+GET TEST "double quote string".
 
-FILE 'single quote string'.
+FIT TEST 'single quote string'.
 
 ---
 
@@ -12,6 +12,7 @@ FILE 'single quote string'.
  (command
   (identifier)
   (arguments
+   (keyword)
    (string)
   )
   (end_of_command)
@@ -19,6 +20,7 @@ FILE 'single quote string'.
  (command
   (identifier)
   (arguments
+   (keyword)
    (string)
   )
   (end_of_command)
