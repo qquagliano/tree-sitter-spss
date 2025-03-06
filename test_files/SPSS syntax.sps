@@ -1,4 +1,4 @@
-﻿* Encoding: UTF-8.
+* Encoding: UTF-8.
 USE ALL.
 COMPUTE filter_$=(Exclude = 0).
 VARIABLE LABELS filter_$ 'Exclude = 0 (FILTER)'.

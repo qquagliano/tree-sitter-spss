@@ -1,1 +1,1 @@
-(command name: (identifier) @indent.begin)
+(command) @indent.begin
