@@ -68,10 +68,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "end_of_command",
           "named": true
         },
         {
@@ -242,6 +246,10 @@
   },
   {
     "type": "comment",
+    "named": true
+  },
+  {
+    "type": "end_of_command",
     "named": true
   },
   {

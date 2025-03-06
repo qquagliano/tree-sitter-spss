@@ -48,10 +48,17 @@
           ]
         },
         {
-          "type": "PATTERN",
-          "value": "\\.\\n"
+          "type": "SYMBOL",
+          "name": "end_of_command"
         }
       ]
+    },
+    "end_of_command": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\.\\n"
+      }
     },
     "subcommand": {
       "type": "PREC_LEFT",
@@ -191,19 +198,19 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[A-Z0-9_\\-][A-Z0-9_\\-]*"
+      "value": "[A-Z_\\-][A-Z0-9_\\-]*"
     },
     "subidentifier": {
       "type": "PATTERN",
-      "value": "\\/[A-Z0-9_\\-][A-Z0-9_\\-]*"
+      "value": "\\/[A-Z_\\-][A-Z0-9_\\-]*"
     },
     "keyword": {
       "type": "PATTERN",
-      "value": "[A-Z0-9_\\-$][A-Z0-9_\\-$]*"
+      "value": "[A-Z_\\-$][A-Z0-9_\\-$]*"
     },
     "variable": {
       "type": "PATTERN",
-      "value": "[A-Za-z0-9_\\-][A-Za-z0-9_\\-]*"
+      "value": "[A-Za-z_\\-][A-Za-z0-9_\\-]*"
     },
     "string": {
       "type": "PATTERN",

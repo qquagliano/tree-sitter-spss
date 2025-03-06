@@ -14,11 +14,13 @@ FILE 'single quote string'.
   (arguments
    (string)
   )
+  (end_of_command)
  )
  (command
   (identifier)
   (arguments
    (string)
   )
+  (end_of_command)
  )
 )

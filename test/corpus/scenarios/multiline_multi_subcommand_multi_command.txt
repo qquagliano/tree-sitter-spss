@@ -21,6 +21,7 @@ GET
   (subcommand
    (subidentifier)
   )
+  (end_of_command)
  ) 
  (command
   (identifier)
@@ -30,5 +31,6 @@ GET
   (subcommand
    (subidentifier)
   )
+  (end_of_command)
  ) 
 )

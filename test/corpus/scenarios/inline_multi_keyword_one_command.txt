@@ -13,5 +13,6 @@ GET DATA FAST.
    (keyword)
    (keyword)
   )
+  (end_of_command)
   )
 )

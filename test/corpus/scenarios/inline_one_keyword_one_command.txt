@@ -12,5 +12,6 @@ GET DATA.
   (arguments
    (keyword)
   )
-  )
+  (end_of_command)
+ )
 )

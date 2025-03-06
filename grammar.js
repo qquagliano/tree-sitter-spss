@@ -28,8 +28,10 @@ module.exports = grammar({
       field('name', $.identifier), // The actual name of the command
       optional($.arguments), // Optional in-line arguments for single line commands
       optional(repeat($.subcommand)), // Optional new line subcommands for multi-line commands
-      /\.\n/ // Commands end with a period and new line
+      $.end_of_command // Split into a separate node to use for indent control
     ),
+
+    end_of_command: $ => token(/\.\n/), // Commands end with a period and new line // Commands end with a period and new line // Commands end with a period and new line // Commands end with a period and new line
 
     // Subcommands modify or add to command behavior
     subcommand: $ => prec.left(seq(
@@ -69,7 +71,7 @@ module.exports = grammar({
     // TODO: See if there is a way to allow for lowercase in commands,
     // subcommands, and keywords. SPSS can run code not in all caps, even though
     // is is not the usual style and they are still translated to caps during
-    // runtime
+    // runtime. But, I still think I should allow for this.
 
     identifier: $ => /[A-Z_\-][A-Z0-9_\-]*/,
 

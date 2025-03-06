@@ -32,12 +32,14 @@ GET
     (keyword)
     (variable)
   )
+  (end_of_command)
  )
  (command
   (identifier)
   (arguments
    (keyword)
   )
+  (end_of_command)
  )
  (command
   (identifier)
@@ -45,6 +47,7 @@ GET
    (keyword)
    (variable)
   )
+  (end_of_command)
  )
  (command
   (identifier)
@@ -72,6 +75,7 @@ GET
     (variable)
    )
   )
+  (end_of_command)
  )
  (command
   (identifier)
@@ -81,6 +85,7 @@ GET
   (subcommand
    (subidentifier)
   )
+  (end_of_command)
  ) 
  (comment)
  (command
@@ -92,6 +97,7 @@ GET
   (subcommand
    (subidentifier)
   )
+  (end_of_command)
  )
   (comment)
 ) 
