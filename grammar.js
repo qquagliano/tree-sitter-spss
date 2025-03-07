@@ -462,6 +462,7 @@ module.exports = grammar({
       "END PROGRAM."
     ),
 
+    // Split this into to for better control over injections tags
     language: $ => choice(
       $.python,
       $.r

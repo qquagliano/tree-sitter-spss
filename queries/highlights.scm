@@ -1,5 +1,6 @@
 (arguments) @variable
 
+(injection) @function
 (injection_source) @none
 
 (command name: (identifier) @function)

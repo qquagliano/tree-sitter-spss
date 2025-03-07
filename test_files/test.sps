@@ -6,9 +6,8 @@ REGRESSION
   /DEPENDENT api00
   /METHOD = ENTER acs_k3.
 
-BEGIN PROGRAM R
-  print("true")
-  print("hello")
+BEGIN PROGRAM PYTHON3
+  import()
 END PROGRAM.
 
 
