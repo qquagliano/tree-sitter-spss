@@ -115,6 +115,11 @@
     }
   },
   {
+    "type": "injection_source",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "language",
     "named": true,
     "fields": {}
@@ -1531,10 +1536,6 @@
   },
   {
     "type": "end_of_command",
-    "named": true
-  },
-  {
-    "type": "injection_source",
     "named": true
   },
   {

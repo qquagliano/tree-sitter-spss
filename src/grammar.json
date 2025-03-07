@@ -1718,11 +1718,16 @@
           "name": "language"
         },
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "injection_source"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "injection_source"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -1746,8 +1751,11 @@
       ]
     },
     "injection_source": {
-      "type": "PATTERN",
-      "value": "[^\\n]+"
+      "type": "REPEAT1",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\n]+"
+      }
     }
   },
   "extras": [
