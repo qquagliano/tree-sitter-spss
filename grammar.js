@@ -463,9 +463,13 @@ module.exports = grammar({
     ),
 
     language: $ => choice(
-      /PYTHON3/i,
-      /R/i,
+      $.python,
+      $.r
     ),
+
+    python: $ => /PYTHON3/i,
+
+    r: $ => /R/i,
 
     injection_source: $ => repeat1(/[^\n]+/)
   }

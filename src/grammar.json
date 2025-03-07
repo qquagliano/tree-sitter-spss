@@ -1739,16 +1739,24 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "PYTHON3",
-          "flags": "i"
+          "type": "SYMBOL",
+          "name": "python"
         },
         {
-          "type": "PATTERN",
-          "value": "R",
-          "flags": "i"
+          "type": "SYMBOL",
+          "name": "r"
         }
       ]
+    },
+    "python": {
+      "type": "PATTERN",
+      "value": "PYTHON3",
+      "flags": "i"
+    },
+    "r": {
+      "type": "PATTERN",
+      "value": "R",
+      "flags": "i"
     },
     "injection_source": {
       "type": "REPEAT1",

@@ -359,8 +359,8 @@ enum ts_symbol_identifiers {
   sym_comment = 333,
   anon_sym_BEGINPROGRAM = 334,
   anon_sym_ENDPROGRAM_DOT = 335,
-  aux_sym_language_token1 = 336,
-  aux_sym_language_token2 = 337,
+  sym_python = 336,
+  sym_r = 337,
   aux_sym_injection_source_token1 = 338,
   sym_source_file = 339,
   sym_command = 340,
@@ -717,8 +717,8 @@ static const char * const ts_symbol_names[] = {
   [sym_comment] = "comment",
   [anon_sym_BEGINPROGRAM] = "BEGIN PROGRAM",
   [anon_sym_ENDPROGRAM_DOT] = "END PROGRAM.",
-  [aux_sym_language_token1] = "language_token1",
-  [aux_sym_language_token2] = "language_token2",
+  [sym_python] = "python",
+  [sym_r] = "r",
   [aux_sym_injection_source_token1] = "injection_source_token1",
   [sym_source_file] = "source_file",
   [sym_command] = "command",
@@ -1075,8 +1075,8 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_comment] = sym_comment,
   [anon_sym_BEGINPROGRAM] = anon_sym_BEGINPROGRAM,
   [anon_sym_ENDPROGRAM_DOT] = anon_sym_ENDPROGRAM_DOT,
-  [aux_sym_language_token1] = aux_sym_language_token1,
-  [aux_sym_language_token2] = aux_sym_language_token2,
+  [sym_python] = sym_python,
+  [sym_r] = sym_r,
   [aux_sym_injection_source_token1] = aux_sym_injection_source_token1,
   [sym_source_file] = sym_source_file,
   [sym_command] = sym_command,
@@ -2441,13 +2441,13 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [aux_sym_language_token1] = {
-    .visible = false,
-    .named = false,
+  [sym_python] = {
+    .visible = true,
+    .named = true,
   },
-  [aux_sym_language_token2] = {
-    .visible = false,
-    .named = false,
+  [sym_r] = {
+    .visible = true,
+    .named = true,
   },
   [aux_sym_injection_source_token1] = {
     .visible = false,
@@ -9767,10 +9767,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\n') ADVANCE(2218);
       END_STATE();
     case 2196:
-      ACCEPT_TOKEN(aux_sym_language_token1);
+      ACCEPT_TOKEN(sym_python);
       END_STATE();
     case 2197:
-      ACCEPT_TOKEN(aux_sym_language_token2);
+      ACCEPT_TOKEN(sym_r);
       END_STATE();
     case 2198:
       ACCEPT_TOKEN(aux_sym_injection_source_token1);
@@ -10264,8 +10264,8 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_comment] = ACTIONS(3),
     [anon_sym_BEGINPROGRAM] = ACTIONS(1),
     [anon_sym_ENDPROGRAM_DOT] = ACTIONS(1),
-    [aux_sym_language_token1] = ACTIONS(1),
-    [aux_sym_language_token2] = ACTIONS(1),
+    [sym_python] = ACTIONS(1),
+    [sym_r] = ACTIONS(1),
   },
   [1] = {
     [sym_source_file] = STATE(38),
@@ -13458,8 +13458,8 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(28), 1,
       sym_language,
     ACTIONS(196), 2,
-      aux_sym_language_token1,
-      aux_sym_language_token2,
+      sym_python,
+      sym_r,
   [817] = 2,
     ACTIONS(3), 1,
       sym_comment,
