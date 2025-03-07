@@ -12,6 +12,9 @@
 module.exports = grammar({
   name: "spss",
 
+  // Externals are for C scanners - ./src/scanner.c
+  externals: $ => [$.id],
+
   // Extras are allowed anywhere in the code
   extras: $ => [
     $.comment,
