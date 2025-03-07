@@ -1,4 +1,5 @@
-> [!CAUTION] **This tree-sitter parser is in a pre-alpha/experimental/testing
+> [!CAUTION]
+> **This tree-sitter parser is in a pre-alpha/experimental/testing
 > stage. I have no plans for official support or answering issues at this time.
 > I will be working towards a formalized release, but until then, all features
 > are prone to breaking changes - often. Use completely at your own risk.**
@@ -9,11 +10,15 @@ A [tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar and parser f
 
 ## Table of Contents
 
-[Why Make This?](#why-make-this?)
+[Why Make This?](#why-make-this)
 
 [Brief Description of SPSS Syntax](#brief-description-of-spss-syntax)
 
 [Disclaimers](#disclaimers)
+
+[Features](#features)
+
+[Known Limitations](#known-limitations)
 
 ## Why Make This?
 
@@ -71,7 +76,7 @@ so that you can use these languages directly in the syntax.
 arguments into a coherent tree
 
 :white_check_mark: Reasonable **syntax highlighting** for commands, subcommands,
-numbers, strings, and keywords.
+numbers, strings, keywords, and comments.
 
 :white_check_mark: Automatic, context-aware **indenting** that is congruent with
 the style used from the SPSS's "paste" function
@@ -80,7 +85,8 @@ the style used from the SPSS's "paste" function
 
 ## Known Limitations
 
-> [!WARNING] **Reminder that this project is in the testing phase (see top of
+> [!WARNING]
+> **Reminder that this project is in the testing phase (see top of
 > README).**
 
 - Identification of command names is done via an exact match to a full, long
@@ -93,6 +99,23 @@ words.
 - Subcommands and keywords can be similarly tricky to the command problem above.
 Currently, the parsing works "well-enough", but could likely be improved. Using
 exact matches would increase accuracy, but possibly greatly reduce speed.
+
+- Tree-sitter matching is currently *case-sensitive* for commands, subcommands, and
+keywords - meaning that you must write those in all caps for them to be properly
+detected. In the built-in SPSS syntax editor, it accepts commands, subcommands, and
+keywords in a case-insensitive manner; but these are later translated to uppercase
+during runtime. I'll be working at a way to make matches case insensitive, but this
+is tied to the limitations above.
+
+- I have not yet investigated how to use all of tree-sitters queries in application
+to this language (e.g. tags, etc.).
+
+- I have not attempted to install this tree-sitter parser in any context but my own,
+personal tree-sitter configuration in neovim. Your mileage may vary, and I do not yet
+have instructions for installation in various editors. However, this repo is structured
+with the
+[default instructions for writing a new parser](https://tree-sitter.github.io/tree-sitter/creating-parsers/index.html),
+so you may find success in the usual installation methods for your editor.
 
 ## Disclaimers
 
