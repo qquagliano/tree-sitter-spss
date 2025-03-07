@@ -10,15 +10,132 @@ A [tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar and parser f
 
 ## Table of Contents
 
+[Installation](#installation)
+
+[Features](#features)
+
+[Known Limitations](#known-limitations)
+
 [Why Make This?](#why-make-this)
 
 [Brief Description of SPSS Syntax](#brief-description-of-spss-syntax)
 
 [Disclaimers](#disclaimers)
 
-[Features](#features)
+## Installation
 
-[Known Limitations](#known-limitations)
+> [!WARNING]
+> **Reminder that this project is in the testing phase (see top of
+> README).**
+
+For the time being, you may attempt to install this parser via nix flakes or by
+nvim-treesitter's instructions for adding extra parsers. At this time, I am only
+providing instructions for installation in neovim. Regardless of which option
+you use below, be aware that you likely need an autocommand in your neovim setup
+to recognize .sps files as filetype "spss".
+
+### Neovim Autocommand for Filetype Recognition
+
+```{lua}
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = { "*.sps" },
+	callback = function()
+		vim.cmd([[set ft=spss]])
+	end,
+})
+```
+
+### Option 1: Using Nix Flakes (NixOS)
+
+In your `flake.nix` for your NixOS configuration:
+
+```{nix}
+#...
+inputs = {
+    tree-sitter-spss.url = "github:qquagliano/tree-sitter-spss/master";
+};
+#...
+```
+
+and in your configuration for neovim (I use home-manager):
+
+```{nix}
+programs.neovim = {
+    plugins = [
+        pkgs.vimPlugins.nvim-treesitter
+        (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+        _:
+        pkgs.vimPlugins.nvim-treesitter.allGrammars
+        ++ [
+          inputs.tree-sitter-spss.packages.${pkgs.system}.default
+        ]
+        ))
+    ]
+}
+```
+
+### Option 2: Using nvim-treesitter
+
+[Read the instructions here](https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#adding-parsers): 
+
+```{lua}
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.zimbu = {
+  install_info = {
+    url = "https://github.com/qquagliano/tree-sitter-spss",
+    files = {"src/parser.c", "src/scanner.c"},
+    branch = "master",
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = "spss",
+}
+```
+
+## Features
+
+:white_check_mark: **Parsing** of nested commands, subcommands, and keyword
+arguments into a coherent tree
+
+:white_check_mark: Reasonable **syntax highlighting** for commands, subcommands,
+numbers, strings, keywords, and comments.
+
+:white_check_mark: Automatic, context-aware **indenting** that is congruent with
+the style used from the SPSS's "paste" function
+
+:white_check_mark: Python and R **injected languages** via `BEGIN-END PROGRAM`
+
+## Known Limitations
+
+- Identification of command names is done via an exact match to a full, long
+list of possible SPSS commands. This is likely extremely slow and inefficient,
+and I am exploring ways to make this match faster (e.g., port Javascript to C?).
+This is done in part because the arbitrary command names don't necessarily
+follow a predictable pattern - some commands are one word and some are two
+words.
+
+- Subcommands and keywords can be similarly tricky to the command problem above.
+Currently, the parsing works "well-enough", but could likely be improved. Using
+exact matches would increase accuracy, but possibly greatly reduce speed.
+
+- Tree-sitter matching is currently *case-sensitive* for commands, subcommands,
+and keywords - meaning that you must write those in all caps for them to be
+properly detected. In the built-in SPSS syntax editor, it accepts commands,
+subcommands, and keywords in a case-insensitive manner; but these are later
+translated to uppercase during runtime. I'll be working at a way to make matches
+case insensitive, but this is tied to the limitations above.
+
+- I have not yet investigated how to use all of tree-sitters queries in
+application to this language (e.g. tags, etc.).
+
+- I have not attempted to install this tree-sitter parser in any context but my
+own, personal tree-sitter configuration in neovim, on
+[NixOS](https://nixos.org/). Your mileage may vary if you attempt to install,
+and I do not yet have instructions for installation in other editors. However,
+this repo is structured with the [default instructions for writing a new
+parser](https://tree-sitter.github.io/tree-sitter/creating-parsers/index.html),
+so you may find success in the usual installation methods for your editor.
 
 ## Why Make This?
 
@@ -69,53 +186,6 @@ directly [with R](https://www.ibm.com/docs/en/spss-statistics/saas?topic=r-)
 and [with
 Python](https://www.ibm.com/docs/en/spss-statistics/saas?topic=python-overview),
 so that you can use these languages directly in the syntax.
-
-## Features
-
-:white_check_mark: **Parsing** of nested commands, subcommands, and keyword
-arguments into a coherent tree
-
-:white_check_mark: Reasonable **syntax highlighting** for commands, subcommands,
-numbers, strings, keywords, and comments.
-
-:white_check_mark: Automatic, context-aware **indenting** that is congruent with
-the style used from the SPSS's "paste" function
-
-:white_check_mark: Python and R **injected languages** via `BEGIN-END PROGRAM`
-
-## Known Limitations
-
-> [!WARNING]
-> **Reminder that this project is in the testing phase (see top of
-> README).**
-
-- Identification of command names is done via an exact match to a full, long
-list of possible SPSS commands. This is likely extremely slow and inefficient,
-and I am exploring ways to make this match faster (e.g., port Javascript to C?).
-This is done in part because the arbitrary command names don't necessarily
-follow a predictable pattern - some commands are one word and some are two
-words.
-
-- Subcommands and keywords can be similarly tricky to the command problem above.
-Currently, the parsing works "well-enough", but could likely be improved. Using
-exact matches would increase accuracy, but possibly greatly reduce speed.
-
-- Tree-sitter matching is currently *case-sensitive* for commands, subcommands, and
-keywords - meaning that you must write those in all caps for them to be properly
-detected. In the built-in SPSS syntax editor, it accepts commands, subcommands, and
-keywords in a case-insensitive manner; but these are later translated to uppercase
-during runtime. I'll be working at a way to make matches case insensitive, but this
-is tied to the limitations above.
-
-- I have not yet investigated how to use all of tree-sitters queries in application
-to this language (e.g. tags, etc.).
-
-- I have not attempted to install this tree-sitter parser in any context but my own,
-personal tree-sitter configuration in neovim. Your mileage may vary, and I do not yet
-have instructions for installation in various editors. However, this repo is structured
-with the
-[default instructions for writing a new parser](https://tree-sitter.github.io/tree-sitter/creating-parsers/index.html),
-so you may find success in the usual installation methods for your editor.
 
 ## Disclaimers
 
