@@ -36,21 +36,22 @@ to recognize .sps files as filetype "spss".
 
 ### Neovim Autocommand for Filetype Recognition
 
-```{lua}
-
+```lua
+--...
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	pattern = { "*.sps" },
 	callback = function()
 		vim.cmd([[set ft=spss]])
 	end,
 })
+--...
 ```
 
 ### Option 1: Using Nix Flakes (NixOS)
 
 In your `flake.nix` for your NixOS configuration:
 
-```{nix}
+```nix
 #...
 inputs = {
     tree-sitter-spss.url = "github:qquagliano/tree-sitter-spss/master";
@@ -60,7 +61,8 @@ inputs = {
 
 and in your configuration for neovim (I use home-manager):
 
-```{nix}
+```nix
+#...
 programs.neovim = {
     plugins = [
         pkgs.vimPlugins.nvim-treesitter
@@ -73,13 +75,15 @@ programs.neovim = {
         ))
     ]
 }
+#...
 ```
 
 ### Option 2: Using nvim-treesitter
 
 [Read the instructions here](https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#adding-parsers): 
 
-```{lua}
+```lua
+--...
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.zimbu = {
   install_info = {
@@ -91,6 +95,7 @@ parser_config.zimbu = {
   },
   filetype = "spss",
 }
+--...
 ```
 
 ## Features
