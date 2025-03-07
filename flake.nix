@@ -12,83 +12,91 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    tree-sitter-spss.url = "github:qquagliano/tree-sitter-spss";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
     {
+      self,
       nixpkgs,
-    }:
-    {
-      # language name
-      language,
-      version,
-      src,
-      location ? null,
-      generate ? false,
+      flake-utils,
       ...
     }@args:
-    {
-      tree-sitter-spss = nixpkgs.stdenv.mkDerivation (
-        {
-          pname = "${language}-grammar";
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        language = "spss";
+        version = "0.10";
+        src = builtins.toString ./.;
+        location = null;
+        generate = true;
+        pkgs = nixpkgs.legacyPackages.${system};
+        lib = nixpkgs.lib;
+      in
+      {
+        packages = {
+          default = pkgs.stdenv.mkDerivation (
+            {
+              pname = "${language}-grammar";
 
-          inherit src version;
+              inherit src version;
 
-          nativeBuildInputs = nixpkgs.lib.optionals generate [
-            nixpkgs.nodejs
-            nixpkgs.tree-sitter
-          ];
+              nativeBuildInputs = lib.optionals generate [
+                pkgs.nodejs
+                pkgs.tree-sitter
+              ];
 
-          CFLAGS = [
-            "-Isrc"
-            "-O2"
-          ];
-          CXXFLAGS = [
-            "-Isrc"
-            "-O2"
-          ];
+              CFLAGS = [
+                "-Isrc"
+                "-O2"
+              ];
+              CXXFLAGS = [
+                "-Isrc"
+                "-O2"
+              ];
 
-          stripDebugList = [ "parser" ];
+              stripDebugList = [ "parser" ];
 
-          configurePhase =
-            nixpkgs.lib.optionalString (location != null) ''
-              cd ${location}
-            ''
-            + nixpkgs.lib.optionalString generate ''
-              tree-sitter generate
-            '';
+              configurePhase =
+                lib.optionalString (location != null) ''
+                  cd ${location}
+                ''
+                + lib.optionalString generate ''
+                  tree-sitter generate
+                '';
 
-          # When both scanner.{c,cc} exist, we should not link both since they may be the same but in
-          # different languages. Just randomly prefer C++ if that happens.
-          buildPhase = ''
-            runHook preBuild
-            if [[ -e src/scanner.cc ]]; then
-              $CXX -fPIC -c src/scanner.cc -o scanner.o $CXXFLAGS
-            elif [[ -e src/scanner.c ]]; then
-              $CC -fPIC -c src/scanner.c -o scanner.o $CFLAGS
-            fi
-            $CC -fPIC -c src/parser.c -o parser.o $CFLAGS
-            rm -rf parser
-            $CXX -shared -o parser *.o
-            runHook postBuild
-          '';
+              # When both scanner.{c,cc} exist, we should not link both since they may be the same but in
+              # different languages. Just randomly prefer C++ if that happens.
+              buildPhase = ''
+                runHook preBuild
+                if [[ -e src/scanner.cc ]]; then
+                  $CXX -fPIC -c src/scanner.cc -o scanner.o $CXXFLAGS
+                elif [[ -e src/scanner.c ]]; then
+                  $CC -fPIC -c src/scanner.c -o scanner.o $CFLAGS
+                fi
+                $CC -fPIC -c src/parser.c -o parser.o $CFLAGS
+                rm -rf parser
+                $CXX -shared -o parser *.o
+                runHook postBuild
+              '';
 
-          installPhase = ''
-            runHook preInstall
-            mkdir $out
-            mv parser $out/
-            if [[ -d queries ]]; then
-              cp -r queries $out
-            fi
-            runHook postInstall
-          '';
-        }
-        // removeAttrs args [
-          "language"
-          "location"
-          "generate"
-        ]
-      );
-    };
+              installPhase = ''
+                runHook preInstall
+                mkdir $out
+                mv parser $out/
+                if [[ -d queries ]]; then
+                  cp -r queries $out
+                fi
+                runHook postInstall
+              '';
+            }
+            // removeAttrs args [
+              "language"
+              "location"
+              "generate"
+            ]
+          );
+        };
+      }
+    );
 }
