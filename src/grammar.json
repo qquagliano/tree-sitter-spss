@@ -1718,8 +1718,11 @@
           "name": "language"
         },
         {
-          "type": "SYMBOL",
-          "name": "injection_source"
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "injection_source"
+          }
         },
         {
           "type": "STRING",
@@ -1744,7 +1747,7 @@
     },
     "injection_source": {
       "type": "PATTERN",
-      "value": "[\\s\\S]*"
+      "value": "[^\\n]+"
     }
   },
   "extras": [

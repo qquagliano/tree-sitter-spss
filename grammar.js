@@ -458,7 +458,7 @@ module.exports = grammar({
     injection: $ => seq(
       "BEGIN PROGRAM",
       $.language, // The injected language name
-      $.injection_source,
+      repeat($.injection_source),
       "END PROGRAM."
     ),
 
@@ -467,6 +467,6 @@ module.exports = grammar({
       /R/i,
     ),
 
-    injection_source: $ => /[\s\S]*/
+    injection_source: $ => /[^\n]+/
   }
 });
