@@ -1,13 +1,20 @@
-#include "tree_sitter/alloc.h"
-#include "tree_sitter/array.h"
 #include "tree_sitter/parser.h"
 #include <ctype.h>
 #include <stdbool.h>
+#include <stddef.h>
 #include <string.h>
 
-enum TokenType { ID };
+// The external token produced by this scanner.
+// (Note: our grammar.js expects an external $.id, so you might choose to name
+// this ID.)
+enum TokenType {
+  ID,
+  SUBID,
+};
 
-const char *commands[] = {
+//---------------------------------------------------------------------
+// The list of SPSS command names.
+static const char *command_list[] = {
     "2SLS",
     "ACF",
     "ADD DOCUMENT",
@@ -51,7 +58,6 @@ const char *commands[] = {
     "CLUSTER",
     "CNLR",
     "CODEBOOK",
-    "COMMENT",
     "COMPARE DATASETS",
     "COMPUTE",
     "CONJOINT",
@@ -339,64 +345,128 @@ const char *commands[] = {
     "XSAVE",
 };
 
-const size_t command_count = sizeof(commands) / sizeof(commands[0]);
+//---------------------------------------------------------------------
+// The list of SPSS subcommand names.
+static const char *subcommand_list[] = {};
 
-// NOTE: The most important one
+static const size_t NUM_COMMANDS =
+    sizeof(command_list) / sizeof(command_list[0]);
 
-// Scan
+//---------------------------------------------------------------------
+// Helper: checks if a character is allowed in a command name.
+// (Letters, digits, spaces, and '-' are allowed.)
+static inline bool is_command_char(int32_t c) {
+  return c != 0 && (isalpha(c) || isdigit(c) || c == ' ' || c == '-');
+}
+
+//---------------------------------------------------------------------
+// The external scanner function.
+// It advances through the input while tracking candidates that match
+// one of our fixed command names. When a candidate is complete (i.e. pos
+// equals the candidate’s length) we mark that as a potential match.
+// However, we do not immediately stop if the next character is a valid
+// command character—if any candidate remains that could extend the match,
+// we continue scanning.
 bool tree_sitter_spss_external_scanner_scan(void *payload, TSLexer *lexer,
                                             const bool *valid_symbols) {
-  // Skip any leading whitespace
-  while (isspace(lexer->lookahead)) {
+  if (!valid_symbols[ID])
+    return false;
+
+  // Skip any leading whitespace.
+  while (isspace(lexer->lookahead))
     lexer->advance(lexer, true);
-  }
 
-  // Buffer to store the potential keyword
-  char buffer[32];
-  size_t length = 0;
+  bool candidate_possible[NUM_COMMANDS];
+  for (size_t i = 0; i < NUM_COMMANDS; i++)
+    candidate_possible[i] = true;
 
-  // Read characters into the buffer
-  while (isalnum(lexer->lookahead) || lexer->lookahead == ' ') {
-    if (length < sizeof(buffer) - 1) {
-      buffer[length++] = toupper(lexer->lookahead);
+  size_t pos = 0;
+  size_t best_match_length = 0;
+  bool found_complete = false;
+
+  while (true) {
+    int32_t lookahead = lexer->lookahead;
+    if (lookahead == 0)
+      break;
+
+    bool any_possible = false;
+    // Update candidate possibilities.
+    for (size_t i = 0; i < NUM_COMMANDS; i++) {
+      if (!candidate_possible[i])
+        continue;
+      size_t cmd_len = strlen(command_list[i]);
+      if (pos < cmd_len) {
+        char expected = command_list[i][pos];
+        if (tolower(lookahead) != tolower(expected))
+          candidate_possible[i] = false;
+      }
+      if (candidate_possible[i])
+        any_possible = true;
     }
+
+    // Check for complete candidates at the current position.
+    bool current_complete = false;
+    for (size_t i = 0; i < NUM_COMMANDS; i++) {
+      if (!candidate_possible[i])
+        continue;
+      size_t cmd_len = strlen(command_list[i]);
+      if (pos == cmd_len) {
+        current_complete = true;
+        // Record the best (longest) complete match.
+        if (cmd_len > best_match_length)
+          best_match_length = cmd_len;
+      }
+    }
+    if (current_complete)
+      found_complete = true;
+
+    // If we have a complete match, check if any candidate remains
+    // that could extend the match (i.e. has a longer name).
+    bool ambiguous = false;
+    for (size_t i = 0; i < NUM_COMMANDS; i++) {
+      if (!candidate_possible[i])
+        continue;
+      if (strlen(command_list[i]) > pos) {
+        ambiguous = true;
+        break;
+      }
+    }
+    // If we have a complete match and no candidate can extend further,
+    // stop scanning so we don't consume extra characters.
+    if (found_complete && !ambiguous)
+      break;
+
+    // If no candidates remain, break out.
+    if (!any_possible)
+      break;
+
     lexer->advance(lexer, false);
-  }
-  buffer[length] = '\0';
-
-  // Check if the buffer matches any keyword
-  for (size_t i = 0; i < command_count; i++) {
-    if (strcmp(buffer, commands[i]) == 0) {
-      // Set the appropriate token
-      lexer->result_symbol = ID;
-      return true;
-    }
+    pos++;
   }
 
-  return false;
+  if (!found_complete)
+    return false;
+
+  // Mark the end at the best complete match.
+  lexer->mark_end(lexer);
+  lexer->result_symbol = ID;
+  return true;
 }
 
-// NOTE: The below 4 are less important
-
-// Create
-void *tree_sitter_spss_external_scanner_create() {
-  // ...
-}
-
-// Destroy
-void tree_sitter_spss_external_scanner_destroy(void *payload) {
-  // ...
-}
-
-// Serialize
+//---------------------------------------------------------------------
+// Scanner state management functions.
+void *tree_sitter_spss_external_scanner_create(void) { return NULL; }
+void tree_sitter_spss_external_scanner_destroy(void *payload) { (void)payload; }
 unsigned tree_sitter_spss_external_scanner_serialize(void *payload,
                                                      char *buffer) {
-  // ...
+  (void)payload;
+  (void)buffer;
+  return 0;
 }
-
-// Deserialize
 void tree_sitter_spss_external_scanner_deserialize(void *payload,
                                                    const char *buffer,
                                                    unsigned length) {
-  // ...
+  (void)payload;
+  (void)buffer;
+  (void)length;
 }
