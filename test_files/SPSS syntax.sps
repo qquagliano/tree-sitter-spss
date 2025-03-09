@@ -6,6 +6,9 @@ VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
 FORMATS filter_$ (f1.0).
 FILTER BY filter_$.
 EXECUTE.
+
+CORRELATIONS
+  /MISSING=PAIRWISE.
   
  BOOTSTRAP
   /SAMPLING METHOD=SIMPLE
