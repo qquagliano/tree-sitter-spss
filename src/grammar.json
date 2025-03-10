@@ -70,7 +70,7 @@
       }
     },
     "subcommand": {
-      "type": "PREC_RIGHT",
+      "type": "PREC_LEFT",
       "value": 0,
       "content": {
         "type": "SEQ",
@@ -99,51 +99,47 @@
       }
     },
     "arguments": {
-      "type": "PREC_RIGHT",
-      "value": 0,
+      "type": "REPEAT1",
       "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "keyword"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "parenthetical"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "variable"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "string"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "number"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "arithmetic"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "comparison"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "logical"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "comma"
-            }
-          ]
-        }
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "keyword"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "parenthetical"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "variable"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "string"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "number"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "arithmetic"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comparison"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "logical"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comma"
+          }
+        ]
       }
     },
     "parenthetical": {
@@ -209,9 +205,1338 @@
         }
       ]
     },
+    "identifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "2SLS"
+        },
+        {
+          "type": "STRING",
+          "value": "ACF"
+        },
+        {
+          "type": "STRING",
+          "value": "ADD DOCUMENT"
+        },
+        {
+          "type": "STRING",
+          "value": "ADD FILES"
+        },
+        {
+          "type": "STRING",
+          "value": "ADD VALUE LABELS"
+        },
+        {
+          "type": "STRING",
+          "value": "ADP"
+        },
+        {
+          "type": "STRING",
+          "value": "AGGREGATE"
+        },
+        {
+          "type": "STRING",
+          "value": "AIM"
+        },
+        {
+          "type": "STRING",
+          "value": "ALSCAL"
+        },
+        {
+          "type": "STRING",
+          "value": "ALTER TYPE"
+        },
+        {
+          "type": "STRING",
+          "value": "ANACOR"
+        },
+        {
+          "type": "STRING",
+          "value": "ANOVA"
+        },
+        {
+          "type": "STRING",
+          "value": "APPLY DICTIONARY"
+        },
+        {
+          "type": "STRING",
+          "value": "AREG"
+        },
+        {
+          "type": "STRING",
+          "value": "ARIMA"
+        },
+        {
+          "type": "STRING",
+          "value": "AUTORECODE"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES ANOVA"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES CORRELATION"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES INDEPENDENT"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES LOGLINEAR"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES REGRESSION"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES RELATED"
+        },
+        {
+          "type": "STRING",
+          "value": "BAYES REPEATED"
+        },
+        {
+          "type": "STRING",
+          "value": "BEGIN DATA"
+        },
+        {
+          "type": "STRING",
+          "value": "BEGIN EXPR"
+        },
+        {
+          "type": "STRING",
+          "value": "BEGIN EXPR-END EXPR"
+        },
+        {
+          "type": "STRING",
+          "value": "BEGIN GPL-END GPL"
+        },
+        {
+          "type": "STRING",
+          "value": "BOOTSTRAP"
+        },
+        {
+          "type": "STRING",
+          "value": "BREAK"
+        },
+        {
+          "type": "STRING",
+          "value": "CACHE"
+        },
+        {
+          "type": "STRING",
+          "value": "CASEPLOT"
+        },
+        {
+          "type": "STRING",
+          "value": "CASESTOVARS"
+        },
+        {
+          "type": "STRING",
+          "value": "CATREG"
+        },
+        {
+          "type": "STRING",
+          "value": "CD"
+        },
+        {
+          "type": "STRING",
+          "value": "CLABELS"
+        },
+        {
+          "type": "STRING",
+          "value": "CLEAR TIME PROGRAM"
+        },
+        {
+          "type": "STRING",
+          "value": "CLEAR TRANSFORMATIONS"
+        },
+        {
+          "type": "STRING",
+          "value": "CLUSTER"
+        },
+        {
+          "type": "STRING",
+          "value": "CNLR"
+        },
+        {
+          "type": "STRING",
+          "value": "CODEBOOK"
+        },
+        {
+          "type": "STRING",
+          "value": "COMMENT"
+        },
+        {
+          "type": "STRING",
+          "value": "COMPARE DATASETS"
+        },
+        {
+          "type": "STRING",
+          "value": "COMPUTE"
+        },
+        {
+          "type": "STRING",
+          "value": "CONJOINT"
+        },
+        {
+          "type": "STRING",
+          "value": "CONSTRAINED FUNCTIONS"
+        },
+        {
+          "type": "STRING",
+          "value": "CORRELATIONS"
+        },
+        {
+          "type": "STRING",
+          "value": "CORRESPONDENCE"
+        },
+        {
+          "type": "STRING",
+          "value": "COUNT"
+        },
+        {
+          "type": "STRING",
+          "value": "COXREG"
+        },
+        {
+          "type": "STRING",
+          "value": "CREATE"
+        },
+        {
+          "type": "STRING",
+          "value": "CROSSTABS"
+        },
+        {
+          "type": "STRING",
+          "value": "CSCOXREG"
+        },
+        {
+          "type": "STRING",
+          "value": "CSDESCRIPTIVES"
+        },
+        {
+          "type": "STRING",
+          "value": "CSGLM"
+        },
+        {
+          "type": "STRING",
+          "value": "CSLOGISTIC"
+        },
+        {
+          "type": "STRING",
+          "value": "CSORDINAL"
+        },
+        {
+          "type": "STRING",
+          "value": "CSPLAN"
+        },
+        {
+          "type": "STRING",
+          "value": "CSSELECT"
+        },
+        {
+          "type": "STRING",
+          "value": "CSTABULATE"
+        },
+        {
+          "type": "STRING",
+          "value": "CTABLES"
+        },
+        {
+          "type": "STRING",
+          "value": "CURVEFIT"
+        },
+        {
+          "type": "STRING",
+          "value": "DATA LIST"
+        },
+        {
+          "type": "STRING",
+          "value": "DATAFILE ATTRIBUTE"
+        },
+        {
+          "type": "STRING",
+          "value": "DATASET ACTIVATE"
+        },
+        {
+          "type": "STRING",
+          "value": "DATASET CLOSE"
+        },
+        {
+          "type": "STRING",
+          "value": "DATASET COPY"
+        },
+        {
+          "type": "STRING",
+          "value": "DATASET DECLARE"
+        },
+        {
+          "type": "STRING",
+          "value": "DATASET DISPLAY"
+        },
+        {
+          "type": "STRING",
+          "value": "DATASET NAME"
+        },
+        {
+          "type": "STRING",
+          "value": "DATE"
+        },
+        {
+          "type": "STRING",
+          "value": "DEFINE"
+        },
+        {
+          "type": "STRING",
+          "value": "DELETE VARIABLES"
+        },
+        {
+          "type": "STRING",
+          "value": "DERIVATIVES"
+        },
+        {
+          "type": "STRING",
+          "value": "DESCRIPTIVES"
+        },
+        {
+          "type": "STRING",
+          "value": "DETECTANOMALY"
+        },
+        {
+          "type": "STRING",
+          "value": "DISCRIMINANT"
+        },
+        {
+          "type": "STRING",
+          "value": "DISPLAY"
+        },
+        {
+          "type": "STRING",
+          "value": "DO IF"
+        },
+        {
+          "type": "STRING",
+          "value": "DO REPEAT"
+        },
+        {
+          "type": "STRING",
+          "value": "DOCUMENT"
+        },
+        {
+          "type": "STRING",
+          "value": "DROP DOCUMENTS"
+        },
+        {
+          "type": "STRING",
+          "value": "ECHO"
+        },
+        {
+          "type": "STRING",
+          "value": "END CASE"
+        },
+        {
+          "type": "STRING",
+          "value": "END FILE"
+        },
+        {
+          "type": "STRING",
+          "value": "ERASE"
+        },
+        {
+          "type": "STRING",
+          "value": "EXAMINE"
+        },
+        {
+          "type": "STRING",
+          "value": "EXECUTE"
+        },
+        {
+          "type": "STRING",
+          "value": "EXPORT"
+        },
+        {
+          "type": "STRING",
+          "value": "EXSMOOTH"
+        },
+        {
+          "type": "STRING",
+          "value": "EXTENSION"
+        },
+        {
+          "type": "STRING",
+          "value": "FACTOR"
+        },
+        {
+          "type": "STRING",
+          "value": "FILE HANDLE"
+        },
+        {
+          "type": "STRING",
+          "value": "FILE LABEL"
+        },
+        {
+          "type": "STRING",
+          "value": "FILE TYPE"
+        },
+        {
+          "type": "STRING",
+          "value": "FILTER"
+        },
+        {
+          "type": "STRING",
+          "value": "FINISH"
+        },
+        {
+          "type": "STRING",
+          "value": "FIT"
+        },
+        {
+          "type": "STRING",
+          "value": "FLEISS MULTIRATER KAPPA"
+        },
+        {
+          "type": "STRING",
+          "value": "FLIP"
+        },
+        {
+          "type": "STRING",
+          "value": "FORMATS"
+        },
+        {
+          "type": "STRING",
+          "value": "FREQUENCIES"
+        },
+        {
+          "type": "STRING",
+          "value": "GENLIN"
+        },
+        {
+          "type": "STRING",
+          "value": "GENLINMIXED"
+        },
+        {
+          "type": "STRING",
+          "value": "GENLOG"
+        },
+        {
+          "type": "STRING",
+          "value": "GET"
+        },
+        {
+          "type": "STRING",
+          "value": "GET CAPTURE"
+        },
+        {
+          "type": "STRING",
+          "value": "GET DATA"
+        },
+        {
+          "type": "STRING",
+          "value": "GET SAS"
+        },
+        {
+          "type": "STRING",
+          "value": "GET STATA"
+        },
+        {
+          "type": "STRING",
+          "value": "GET TRANSLATE"
+        },
+        {
+          "type": "STRING",
+          "value": "GETCOGNOS"
+        },
+        {
+          "type": "STRING",
+          "value": "GETTM1"
+        },
+        {
+          "type": "STRING",
+          "value": "GGRAPH"
+        },
+        {
+          "type": "STRING",
+          "value": "GLM"
+        },
+        {
+          "type": "STRING",
+          "value": "GRAPH"
+        },
+        {
+          "type": "STRING",
+          "value": "HILOGLINEAR"
+        },
+        {
+          "type": "STRING",
+          "value": "HOMALS"
+        },
+        {
+          "type": "STRING",
+          "value": "HOST"
+        },
+        {
+          "type": "STRING",
+          "value": "IBREAK"
+        },
+        {
+          "type": "STRING",
+          "value": "IDO"
+        },
+        {
+          "type": "STRING",
+          "value": "IDOEND"
+        },
+        {
+          "type": "STRING",
+          "value": "IGRAPH"
+        },
+        {
+          "type": "STRING",
+          "value": "IIF"
+        },
+        {
+          "type": "STRING",
+          "value": "IIFEND"
+        },
+        {
+          "type": "STRING",
+          "value": "ILET"
+        },
+        {
+          "type": "STRING",
+          "value": "IMPORT"
+        },
+        {
+          "type": "STRING",
+          "value": "INCLUDE"
+        },
+        {
+          "type": "STRING",
+          "value": "INPUT PROGRAM"
+        },
+        {
+          "type": "STRING",
+          "value": "INSERT"
+        },
+        {
+          "type": "STRING",
+          "value": "INSERT EXEC"
+        },
+        {
+          "type": "STRING",
+          "value": "INSERT EXEC"
+        },
+        {
+          "type": "STRING",
+          "value": "INSERT HIDDDEN"
+        },
+        {
+          "type": "STRING",
+          "value": "INSERT HIDDEN"
+        },
+        {
+          "type": "STRING",
+          "value": "KEYED DATA LIST"
+        },
+        {
+          "type": "STRING",
+          "value": "KM"
+        },
+        {
+          "type": "STRING",
+          "value": "KNN"
+        },
+        {
+          "type": "STRING",
+          "value": "LINEAR"
+        },
+        {
+          "type": "STRING",
+          "value": "LIST"
+        },
+        {
+          "type": "STRING",
+          "value": "LOGISTIC REGRESSION"
+        },
+        {
+          "type": "STRING",
+          "value": "LOGLINEAR"
+        },
+        {
+          "type": "STRING",
+          "value": "LOOP"
+        },
+        {
+          "type": "STRING",
+          "value": "MANOVA"
+        },
+        {
+          "type": "STRING",
+          "value": "MATCH FILES"
+        },
+        {
+          "type": "STRING",
+          "value": "MATRIX"
+        },
+        {
+          "type": "STRING",
+          "value": "MATRIX DATA"
+        },
+        {
+          "type": "STRING",
+          "value": "MCONVERT"
+        },
+        {
+          "type": "STRING",
+          "value": "MEANS"
+        },
+        {
+          "type": "STRING",
+          "value": "MISSING VALUES"
+        },
+        {
+          "type": "STRING",
+          "value": "MIXED"
+        },
+        {
+          "type": "STRING",
+          "value": "MLP"
+        },
+        {
+          "type": "STRING",
+          "value": "MODEL CLOSE"
+        },
+        {
+          "type": "STRING",
+          "value": "MODEL HANDLE"
+        },
+        {
+          "type": "STRING",
+          "value": "MODEL LIST"
+        },
+        {
+          "type": "STRING",
+          "value": "MODEL NAME"
+        },
+        {
+          "type": "STRING",
+          "value": "MODEL PROGRAM"
+        },
+        {
+          "type": "STRING",
+          "value": "MRSETS"
+        },
+        {
+          "type": "STRING",
+          "value": "MULT RESPONSE"
+        },
+        {
+          "type": "STRING",
+          "value": "MULTIPLE CORRESPONDENCE"
+        },
+        {
+          "type": "STRING",
+          "value": "MULTIPLE IMPUTATION"
+        },
+        {
+          "type": "STRING",
+          "value": "MVA"
+        },
+        {
+          "type": "STRING",
+          "value": "N OF CASES"
+        },
+        {
+          "type": "STRING",
+          "value": "NAIVEBAYES"
+        },
+        {
+          "type": "STRING",
+          "value": "NEW FILE"
+        },
+        {
+          "type": "STRING",
+          "value": "NLR"
+        },
+        {
+          "type": "STRING",
+          "value": "NOMREG"
+        },
+        {
+          "type": "STRING",
+          "value": "NONPAR CORR"
+        },
+        {
+          "type": "STRING",
+          "value": "NPAR TESTS"
+        },
+        {
+          "type": "STRING",
+          "value": "NPTESTS"
+        },
+        {
+          "type": "STRING",
+          "value": "NUMERIC"
+        },
+        {
+          "type": "STRING",
+          "value": "OLAP CUBES"
+        },
+        {
+          "type": "STRING",
+          "value": "OMS"
+        },
+        {
+          "type": "STRING",
+          "value": "OMSEND"
+        },
+        {
+          "type": "STRING",
+          "value": "OMSINFO"
+        },
+        {
+          "type": "STRING",
+          "value": "OMSLOG"
+        },
+        {
+          "type": "STRING",
+          "value": "ONEWAY"
+        },
+        {
+          "type": "STRING",
+          "value": "OPTIMAL BINNING"
+        },
+        {
+          "type": "STRING",
+          "value": "ORTHOPLAN"
+        },
+        {
+          "type": "STRING",
+          "value": "OUTPUT MODIFY"
+        },
+        {
+          "type": "STRING",
+          "value": "OUTPUT NAME"
+        },
+        {
+          "type": "STRING",
+          "value": "OUTPUT NEW"
+        },
+        {
+          "type": "STRING",
+          "value": "OUTPUT OPEN"
+        },
+        {
+          "type": "STRING",
+          "value": "OUTPUT SAVE"
+        },
+        {
+          "type": "STRING",
+          "value": "OVERALS"
+        },
+        {
+          "type": "STRING",
+          "value": "PACF"
+        },
+        {
+          "type": "STRING",
+          "value": "PARTIAL CORR"
+        },
+        {
+          "type": "STRING",
+          "value": "PERMISSIONS"
+        },
+        {
+          "type": "STRING",
+          "value": "PLANCARDS"
+        },
+        {
+          "type": "STRING",
+          "value": "PLS"
+        },
+        {
+          "type": "STRING",
+          "value": "PLUM"
+        },
+        {
+          "type": "STRING",
+          "value": "POINT"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER MEANS INDEPENDENT"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER MEANS INDEPENDENT"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER MEANS ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER MEANS ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER MEANS RELATED"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER MEANS RELATED"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER ONEWAY ANOVA"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER ONEWAY ANOVA"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PARTIALCORR"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PARTIALCORR"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PEARSON ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PEARSON ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PROPORTIONS INDEPENDENT"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PROPORTIONS INDEPENDENT"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PROPORTIONS ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PROPORTIONS ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PROPORTIONS RELATED"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER PROPORTIONS RELATED"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER SPEARMAN ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER SPEARMAN ONESAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER UNIVARIATE LINEAR"
+        },
+        {
+          "type": "STRING",
+          "value": "POWER UNIVARIATE LINEAR"
+        },
+        {
+          "type": "STRING",
+          "value": "PPLOT"
+        },
+        {
+          "type": "STRING",
+          "value": "PREDICT"
+        },
+        {
+          "type": "STRING",
+          "value": "PREFSCAL"
+        },
+        {
+          "type": "STRING",
+          "value": "PRESERVE"
+        },
+        {
+          "type": "STRING",
+          "value": "PRINCALS"
+        },
+        {
+          "type": "STRING",
+          "value": "PRINT"
+        },
+        {
+          "type": "STRING",
+          "value": "PRINT EJECT"
+        },
+        {
+          "type": "STRING",
+          "value": "PRINT FORMATS"
+        },
+        {
+          "type": "STRING",
+          "value": "PRINT SPACE"
+        },
+        {
+          "type": "STRING",
+          "value": "PROBIT"
+        },
+        {
+          "type": "STRING",
+          "value": "PROCEDURE OUTPUT"
+        },
+        {
+          "type": "STRING",
+          "value": "PROPORTIONS"
+        },
+        {
+          "type": "STRING",
+          "value": "PROXIMITIES"
+        },
+        {
+          "type": "STRING",
+          "value": "PROXSCAL"
+        },
+        {
+          "type": "STRING",
+          "value": "QUANTILE REGRESSION"
+        },
+        {
+          "type": "STRING",
+          "value": "QUICK CLUSTER"
+        },
+        {
+          "type": "STRING",
+          "value": "RANK"
+        },
+        {
+          "type": "STRING",
+          "value": "RATIO STATISTICS"
+        },
+        {
+          "type": "STRING",
+          "value": "RBF"
+        },
+        {
+          "type": "STRING",
+          "value": "READ MODEL"
+        },
+        {
+          "type": "STRING",
+          "value": "RECODE"
+        },
+        {
+          "type": "STRING",
+          "value": "RECORD TYPE"
+        },
+        {
+          "type": "STRING",
+          "value": "REGRESSION"
+        },
+        {
+          "type": "STRING",
+          "value": "RELIABILITY"
+        },
+        {
+          "type": "STRING",
+          "value": "RENAME"
+        },
+        {
+          "type": "STRING",
+          "value": "RENAME VARIABLES"
+        },
+        {
+          "type": "STRING",
+          "value": "REPEATING DATA"
+        },
+        {
+          "type": "STRING",
+          "value": "REPORT"
+        },
+        {
+          "type": "STRING",
+          "value": "REPOSITORY ATTRIBUTES"
+        },
+        {
+          "type": "STRING",
+          "value": "REPOSITORY CONNECT"
+        },
+        {
+          "type": "STRING",
+          "value": "REPOSITORY COPY"
+        },
+        {
+          "type": "STRING",
+          "value": "REREAD"
+        },
+        {
+          "type": "STRING",
+          "value": "RESPONSE RATE"
+        },
+        {
+          "type": "STRING",
+          "value": "RESTORE"
+        },
+        {
+          "type": "STRING",
+          "value": "RMV"
+        },
+        {
+          "type": "STRING",
+          "value": "ROC"
+        },
+        {
+          "type": "STRING",
+          "value": "ROC ANALYSIS"
+        },
+        {
+          "type": "STRING",
+          "value": "ROC ANALYSIS"
+        },
+        {
+          "type": "STRING",
+          "value": "SAMPLE"
+        },
+        {
+          "type": "STRING",
+          "value": "SAVE"
+        },
+        {
+          "type": "STRING",
+          "value": "SAVE CODEPAGE"
+        },
+        {
+          "type": "STRING",
+          "value": "SAVE CODEPAGE"
+        },
+        {
+          "type": "STRING",
+          "value": "SAVE DATA COLLECTION"
+        },
+        {
+          "type": "STRING",
+          "value": "SAVE MODEL"
+        },
+        {
+          "type": "STRING",
+          "value": "SAVE TRANSLATE"
+        },
+        {
+          "type": "STRING",
+          "value": "SCRIPT"
+        },
+        {
+          "type": "STRING",
+          "value": "SEASON"
+        },
+        {
+          "type": "STRING",
+          "value": "SELECT IF"
+        },
+        {
+          "type": "STRING",
+          "value": "SELECTPRED"
+        },
+        {
+          "type": "STRING",
+          "value": "SET"
+        },
+        {
+          "type": "STRING",
+          "value": "SHIFT VALUES"
+        },
+        {
+          "type": "STRING",
+          "value": "SHOW"
+        },
+        {
+          "type": "STRING",
+          "value": "SIMPLAN"
+        },
+        {
+          "type": "STRING",
+          "value": "SIMPREP BEGIN"
+        },
+        {
+          "type": "STRING",
+          "value": "SIMRUN"
+        },
+        {
+          "type": "STRING",
+          "value": "SORT"
+        },
+        {
+          "type": "STRING",
+          "value": "SORT CASES"
+        },
+        {
+          "type": "STRING",
+          "value": "SORT VARIABLES"
+        },
+        {
+          "type": "STRING",
+          "value": "SPATIAL ASSOCIATION RULES"
+        },
+        {
+          "type": "STRING",
+          "value": "SPATIAL ASSOCIATION RULES"
+        },
+        {
+          "type": "STRING",
+          "value": "SPATIAL MAPSPEC"
+        },
+        {
+          "type": "STRING",
+          "value": "SPATIAL MAPSPEC"
+        },
+        {
+          "type": "STRING",
+          "value": "SPATIAL TEMPORAL PREDICTION"
+        },
+        {
+          "type": "STRING",
+          "value": "SPATIAL TEMPORAL PREDICTION"
+        },
+        {
+          "type": "STRING",
+          "value": "SPCHART"
+        },
+        {
+          "type": "STRING",
+          "value": "SPECTRA"
+        },
+        {
+          "type": "STRING",
+          "value": "SPLIT FILE"
+        },
+        {
+          "type": "STRING",
+          "value": "STAR JOIN"
+        },
+        {
+          "type": "STRING",
+          "value": "STRING"
+        },
+        {
+          "type": "STRING",
+          "value": "SUBTITLE"
+        },
+        {
+          "type": "STRING",
+          "value": "SUMMARIZE"
+        },
+        {
+          "type": "STRING",
+          "value": "SURVIVAL"
+        },
+        {
+          "type": "STRING",
+          "value": "SYSFILE INFO"
+        },
+        {
+          "type": "STRING",
+          "value": "T-TEST"
+        },
+        {
+          "type": "STRING",
+          "value": "TCM ANALYSIS"
+        },
+        {
+          "type": "STRING",
+          "value": "TCM APPLY"
+        },
+        {
+          "type": "STRING",
+          "value": "TCM MODEL"
+        },
+        {
+          "type": "STRING",
+          "value": "TDISPLAY"
+        },
+        {
+          "type": "STRING",
+          "value": "TEMPORARY"
+        },
+        {
+          "type": "STRING",
+          "value": "TIME PROGRAM"
+        },
+        {
+          "type": "STRING",
+          "value": "TITLE"
+        },
+        {
+          "type": "STRING",
+          "value": "TMS BEGIN"
+        },
+        {
+          "type": "STRING",
+          "value": "TMS END"
+        },
+        {
+          "type": "STRING",
+          "value": "TMS IMPORT"
+        },
+        {
+          "type": "STRING",
+          "value": "TMS MERGE"
+        },
+        {
+          "type": "STRING",
+          "value": "TREE"
+        },
+        {
+          "type": "STRING",
+          "value": "TSAPPLY"
+        },
+        {
+          "type": "STRING",
+          "value": "TSET"
+        },
+        {
+          "type": "STRING",
+          "value": "TSHOW"
+        },
+        {
+          "type": "STRING",
+          "value": "TSMODEL"
+        },
+        {
+          "type": "STRING",
+          "value": "TSPLOT"
+        },
+        {
+          "type": "STRING",
+          "value": "TWOSTEP CLUSTER"
+        },
+        {
+          "type": "STRING",
+          "value": "UNIANOVA"
+        },
+        {
+          "type": "STRING",
+          "value": "UPDATE"
+        },
+        {
+          "type": "STRING",
+          "value": "USE"
+        },
+        {
+          "type": "STRING",
+          "value": "VALIDATEDATA"
+        },
+        {
+          "type": "STRING",
+          "value": "VALUE LABELS"
+        },
+        {
+          "type": "STRING",
+          "value": "VARCOMP"
+        },
+        {
+          "type": "STRING",
+          "value": "VARIABLE ALIGNMENT"
+        },
+        {
+          "type": "STRING",
+          "value": "VARIABLE ATTRIBUTE"
+        },
+        {
+          "type": "STRING",
+          "value": "VARIABLE LABELS"
+        },
+        {
+          "type": "STRING",
+          "value": "VARIABLE LEVEL"
+        },
+        {
+          "type": "STRING",
+          "value": "VARIABLE ROLE"
+        },
+        {
+          "type": "STRING",
+          "value": "VARIABLE WIDTH"
+        },
+        {
+          "type": "STRING",
+          "value": "VARSTOCASES"
+        },
+        {
+          "type": "STRING",
+          "value": "VECTOR"
+        },
+        {
+          "type": "STRING",
+          "value": "VERIFY"
+        },
+        {
+          "type": "STRING",
+          "value": "WEIGHT"
+        },
+        {
+          "type": "STRING",
+          "value": "WEIGHTED KAPPA"
+        },
+        {
+          "type": "STRING",
+          "value": "WLS"
+        },
+        {
+          "type": "STRING",
+          "value": "WRITE"
+        },
+        {
+          "type": "STRING",
+          "value": "WRITE FORMATS"
+        },
+        {
+          "type": "STRING",
+          "value": "XGRAPH"
+        },
+        {
+          "type": "STRING",
+          "value": "XSAVE"
+        }
+      ]
+    },
+    "subidentifier": {
+      "type": "PATTERN",
+      "value": "\\/[A-Z_\\-][A-Z0-9_\\-]*"
+    },
+    "keyword": {
+      "type": "PATTERN",
+      "value": "[A-Z_\\-$][A-Z0-9_\\-$]*"
+    },
     "variable": {
       "type": "PATTERN",
-      "value": "[A-Za-z_\\-$][A-Za-z0-9_\\-$]*"
+      "value": "[A-Za-z_\\-][A-Za-z0-9_\\-]*"
     },
     "string": {
       "type": "PATTERN",
@@ -448,7 +1773,7 @@
     },
     {
       "type": "PATTERN",
-      "value": "\\s+"
+      "value": "\\s"
     }
   ],
   "conflicts": [],
@@ -456,15 +1781,7 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "identifier"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "subidentifier"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "keyword"
+      "name": "id"
     }
   ],
   "inline": [],
