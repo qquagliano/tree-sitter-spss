@@ -15,10 +15,10 @@
 #define LANGUAGE_VERSION 14
 #define STATE_COUNT 39
 #define LARGE_STATE_COUNT 9
-#define SYMBOL_COUNT 356
+#define SYMBOL_COUNT 355
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 340
-#define EXTERNAL_TOKEN_COUNT 1
+#define TOKEN_COUNT 339
+#define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 1
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
 #define PRODUCTION_ID_COUNT 2
@@ -362,23 +362,22 @@ enum ts_symbol_identifiers {
   sym_python = 336,
   sym_r = 337,
   aux_sym_injection_source_token1 = 338,
-  sym_id = 339,
-  sym_source_file = 340,
-  sym_command = 341,
-  sym_subcommand = 342,
-  sym_arguments = 343,
-  sym_parenthetical = 344,
-  sym_identifier = 345,
-  sym_arithmetic = 346,
-  sym_comparison = 347,
-  sym_logical = 348,
-  sym_injection = 349,
-  sym_language = 350,
-  sym_injection_source = 351,
-  aux_sym_source_file_repeat1 = 352,
-  aux_sym_command_repeat1 = 353,
-  aux_sym_arguments_repeat1 = 354,
-  aux_sym_injection_source_repeat1 = 355,
+  sym_source_file = 339,
+  sym_command = 340,
+  sym_subcommand = 341,
+  sym_arguments = 342,
+  sym_parenthetical = 343,
+  sym_identifier = 344,
+  sym_arithmetic = 345,
+  sym_comparison = 346,
+  sym_logical = 347,
+  sym_injection = 348,
+  sym_language = 349,
+  sym_injection_source = 350,
+  aux_sym_source_file_repeat1 = 351,
+  aux_sym_command_repeat1 = 352,
+  aux_sym_arguments_repeat1 = 353,
+  aux_sym_injection_source_repeat1 = 354,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -721,7 +720,6 @@ static const char * const ts_symbol_names[] = {
   [sym_python] = "python",
   [sym_r] = "r",
   [aux_sym_injection_source_token1] = "injection_source_token1",
-  [sym_id] = "id",
   [sym_source_file] = "source_file",
   [sym_command] = "command",
   [sym_subcommand] = "subcommand",
@@ -1080,7 +1078,6 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_python] = sym_python,
   [sym_r] = sym_r,
   [aux_sym_injection_source_token1] = aux_sym_injection_source_token1,
-  [sym_id] = sym_id,
   [sym_source_file] = sym_source_file,
   [sym_command] = sym_command,
   [sym_subcommand] = sym_subcommand,
@@ -2455,10 +2452,6 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   [aux_sym_injection_source_token1] = {
     .visible = false,
     .named = false,
-  },
-  [sym_id] = {
-    .visible = true,
-    .named = true,
   },
   [sym_source_file] = {
     .visible = true,
@@ -9916,7 +9909,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
 }
 
 static const TSLexMode ts_lex_modes[STATE_COUNT] = {
-  [0] = {.lex_state = 0, .external_lex_state = 1},
+  [0] = {.lex_state = 0},
   [1] = {.lex_state = 1844},
   [2] = {.lex_state = 1844},
   [3] = {.lex_state = 1844},
@@ -10273,7 +10266,6 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_ENDPROGRAM_DOT] = ACTIONS(1),
     [sym_python] = ACTIONS(1),
     [sym_r] = ACTIONS(1),
-    [sym_id] = ACTIONS(1),
   },
   [1] = {
     [sym_source_file] = STATE(38),
@@ -13621,29 +13613,9 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [204] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
 };
 
-enum ts_external_scanner_symbol_identifiers {
-  ts_external_token_id = 0,
-};
-
-static const TSSymbol ts_external_scanner_symbol_map[EXTERNAL_TOKEN_COUNT] = {
-  [ts_external_token_id] = sym_id,
-};
-
-static const bool ts_external_scanner_states[2][EXTERNAL_TOKEN_COUNT] = {
-  [1] = {
-    [ts_external_token_id] = true,
-  },
-};
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-void *tree_sitter_spss_external_scanner_create(void);
-void tree_sitter_spss_external_scanner_destroy(void *);
-bool tree_sitter_spss_external_scanner_scan(void *, TSLexer *, const bool *);
-unsigned tree_sitter_spss_external_scanner_serialize(void *, char *);
-void tree_sitter_spss_external_scanner_deserialize(void *, const char *, unsigned);
-
 #ifdef TREE_SITTER_HIDE_SYMBOLS
 #define TS_PUBLIC
 #elif defined(_WIN32)
@@ -13678,15 +13650,6 @@ TS_PUBLIC const TSLanguage *tree_sitter_spss(void) {
     .alias_sequences = &ts_alias_sequences[0][0],
     .lex_modes = ts_lex_modes,
     .lex_fn = ts_lex,
-    .external_scanner = {
-      &ts_external_scanner_states[0][0],
-      ts_external_scanner_symbol_map,
-      tree_sitter_spss_external_scanner_create,
-      tree_sitter_spss_external_scanner_destroy,
-      tree_sitter_spss_external_scanner_scan,
-      tree_sitter_spss_external_scanner_serialize,
-      tree_sitter_spss_external_scanner_deserialize,
-    },
     .primary_state_ids = ts_primary_state_ids,
   };
   return &language;

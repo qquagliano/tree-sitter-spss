@@ -1778,12 +1778,7 @@
   ],
   "conflicts": [],
   "precedences": [],
-  "externals": [
-    {
-      "type": "SYMBOL",
-      "name": "id"
-    }
-  ],
+  "externals": [],
   "inline": [],
   "supertypes": []
 }
