@@ -85,7 +85,7 @@ programs.neovim = {
 ```lua
 --...
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.zimbu = {
+parser_config.spss = {
   install_info = {
     url = "https://github.com/qquagliano/tree-sitter-spss",
     files = {"src/parser.c", "src/scanner.c"},
@@ -113,23 +113,21 @@ the style used from the SPSS's "paste" function
 
 ## Known Limitations
 
-- Identification of command names is done via an exact match to a full, long
-list of possible SPSS commands. This is likely extremely slow and inefficient,
-and I am exploring ways to make this match faster (e.g., port Javascript to C?).
-This is done in part because the arbitrary command names don't necessarily
-follow a predictable pattern - some commands are one word and some are two
-words.
+- Identification of command names is done via a case-insensitive exact match to
+a full, long list of possible SPSS commands. This is likely extremely slow and
+inefficient, and I am exploring ways to make this match faster. This is done in
+part because the arbitrary command names don't necessarily follow a predictable
+pattern - some commands are one word and some are two words, which can lead to
+arbitrary and unexpected differences.
 
-- Subcommands and keywords can be similarly tricky to the command problem above.
+- Subcommands are currently only identified as such via a leading "/" on a new
+line. If they are used in-line with the command without that "/", they are
+identified as keywords. This likely requires a similar solution to what I have
+set up for commands, as stated above.
+
+- Keywords can be similarly tricky to the command and subcommand problems above.
 Currently, the parsing works "well-enough", but could likely be improved. Using
 exact matches would increase accuracy, but possibly greatly reduce speed.
-
-- Tree-sitter matching is currently *case-sensitive* for commands, subcommands,
-and keywords - meaning that you must write those in all caps for them to be
-properly detected. In the built-in SPSS syntax editor, it accepts commands,
-subcommands, and keywords in a case-insensitive manner; but these are later
-translated to uppercase during runtime. I'll be working at a way to make matches
-case insensitive, but this is tied to the limitations above.
 
 - I have not yet investigated how to use all of tree-sitters queries in
 application to this language (e.g. tags, etc.).
@@ -150,7 +148,7 @@ thought this would be a good challenge. I also use SPSS syntax a fair bit, and
 was looking to improve my own editing experience; I find the SPSS built-in
 syntax editor to be clunky and unenjoyable, even though it is rather convenient.
 
-I am a more avid user of [(neo)vim](https://neovim.io/) motions and
+I am also an avid user of [(neo)vim](https://neovim.io/) motions and
 keybindings, so I wanted better support in that editor for this language - even
 if in a small way. Having this parser is also useful for when I inject SPSS
 syntax for demonstration into my [Quarto](https://quarto.org/) documents.
@@ -185,6 +183,12 @@ In that reference, the ['Universals'
 section](https://www.ibm.com/docs/en/spss-statistics/30.0.0?topic=reference-universals)
 describes the general flow and format of commands and subcommands, and the
 syntax that must be used to write in this format.
+
+One difficulty of dealing with this "language" is that commands, subcommands,
+and keywords all look functionally identical - their only distinguishing feature
+is the order that they are in, and the arbitrary identifier name used by SPSS.
+This imposes some limitation on to this parser (see
+[Limitations](#known-limitations))
 
 In modern versions of SPSS, there is also the included option to integrate
 directly [with R](https://www.ibm.com/docs/en/spss-statistics/saas?topic=r-)

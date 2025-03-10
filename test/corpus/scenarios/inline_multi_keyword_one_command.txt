@@ -10,7 +10,7 @@ GET DATA FAST.
  (command
   (identifier)
   (arguments
-   (keyword)
+   (variable)
   )
   (end_of_command)
   )

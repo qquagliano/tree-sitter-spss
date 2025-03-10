@@ -1,14 +1,14 @@
 ==================
-Multi-line multi-subcommand command
+Multi-line multi-subcommand multi-command
 ==================
 
 GET
-  /TEST1
-  /TEST2.
+  /TEST
+  /TEST.
 
 GET
-  /TEST1
-  /TEST2.
+  /TEST
+  /TEST.
 
 ---
 

@@ -30,8 +30,6 @@ NONPAR CORR
   /PRINT=SPEARMAN TWOTAIL NOSIG
   /MISSING=PAIRWISE.
 
-
-
 USE ALL.
 COMPUTE filter_$=(Exclude = 0 and VolunteeringChoice = 2).
 VARIABLE LABELS filter_$ 'Exclude = 0 and VolunteeringChoice = 2 (FILTER)'.

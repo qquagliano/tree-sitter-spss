@@ -11,18 +11,22 @@ FIT TEST 'single quote string'.
 (source_file
  (command
   (identifier)
-  (arguments
-   (keyword)
-   (string)
-  )
+    (subcommand
+      (subidentifier)
+      (arguments
+        (string)
+      )
+    )
   (end_of_command)
  )
  (command
   (identifier)
-  (arguments
-   (keyword)
-   (string)
-  )
+    (subcommand
+      (subidentifier)
+      (arguments
+        (string)
+      )
+    )
   (end_of_command)
  )
 )

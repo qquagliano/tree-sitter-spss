@@ -8,16 +8,15 @@ module.exports = grammar({
   name: "spss",
 
   // Externals are for C scanner - ./src/scanner.c
-  externals: $ => [$.identifier],
+  externals: $ => [$.identifier, $.subidentifier, $.keyword],
 
   // Extras are allowed anywhere in the code
   extras: $ => [
     $.comment,
-    /\s/
+    /\s+/
   ],
 
   rules: {
-
     // Base SPSS syntax is effectively a list of commands, but I differentiate injected blocks
     source_file: $ => repeat(choice(
       $.command,
@@ -27,21 +26,21 @@ module.exports = grammar({
     // Commands are the primary blocks of SPSS syntax
     command: $ => seq(
       field('name', $.identifier), // The actual name of the command
-      optional($.arguments), // Optional in-line arguments (including subcommand and keywords) for single line commands
-      optional(repeat($.subcommand)), // Optional new line subcommands for multi-line commands
+      optional($.arguments), // Optional direct arguments to commands
+      optional(repeat($.subcommand)), // Optional subcommands
       $.end_of_command // Split into a separate node to use for better indent control
     ),
 
     end_of_command: $ => token(/\.\n/), // Commands end with a period and new line
 
     // Subcommands modify or add to command behavior
-    subcommand: $ => prec.left(seq(
+    subcommand: $ => prec.right(seq(
       field('name', $.subidentifier), // The actual name of the subcommand
       optional($.arguments) // Optional in-line arguments for each subcommand
     )),
 
     // Arguments can be part of commands and/or subcommands, to further define behavior
-    arguments: $ => repeat1(choice(
+    arguments: $ => prec.right(repeat1(choice(
       $.keyword,
       $.parenthetical,
       $.variable,
@@ -51,7 +50,7 @@ module.exports = grammar({
       $.comparison,
       $.logical,
       $.comma
-    )),
+    ))),
 
     parenthetical: $ => seq(
       token("("),
@@ -69,16 +68,7 @@ module.exports = grammar({
       token(")")
     ),
 
-    // TODO: See if there is a way to allow for lowercase in commands,
-    // subcommands, and keywords. SPSS can run code not in all caps, even though
-    // is is not the usual style and they are still translated to caps during
-    // runtime. But, I still think I should allow for this.
-
-    subidentifier: $ => /\/[A-Z_\-][A-Z0-9_\-]*/,
-
-    keyword: $ => /[A-Z_\-$][A-Z0-9_\-$]*/,
-
-    variable: $ => /[A-Za-z_\-][A-Za-z0-9_\-]*/,
+    variable: $ => /[A-Za-z_\-$][A-Za-z0-9_\-$]*/,
 
     string: $ => /'[^']*'|"[^"]*"/,
 

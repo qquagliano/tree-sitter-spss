@@ -12,14 +12,14 @@ ADD FILES /FILE='DataSet1'
   /IN=Sample.
 
 GET
-  /TEST1
-  /TEST2.
+  /TEST
+  /TEST.
 
 COMMENT 1.
 
 GET
-  /TEST1 /* comment 2
-  /TEST2.
+  /TEST /* comment 2
+  /TEST.
 
 * Comment 3
 
@@ -28,16 +28,18 @@ GET
 (source_file
  (command
   (identifier)
-  (arguments
-    (keyword)
+  (subcommand
+   (subidentifier)
+   (arguments
     (variable)
+   )
   )
   (end_of_command)
  )
  (command
   (identifier)
   (arguments
-   (keyword)
+   (variable)
   )
   (end_of_command)
  )
