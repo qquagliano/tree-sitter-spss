@@ -200,8 +200,13 @@ so that you can use these languages directly in the syntax.
 
 SPSS and the command syntax are created and owned by IBM. I make no claim of
 ownership to these products and have only used the publicly available resources
-linked above to produce this open-source project. This project only provides a
-parser to better highlight, indent, and structure this language - but does not
-provide a way to run the syntax itself; that is only available through an
-officially licensed copy of SPSS, [which can be purchased on IBM's
+linked above to produce this open-source project. Any similar
+functionality/behavior between the SPSS built-in syntax editor and this parser
+are the result of reverse-engineered code my myself - no proprietary code was
+used for this project.
+
+This project only provides a parser to better highlight, indent, and structure
+this language - but does not provide a way to run the syntax itself; that is
+only available through an officially licensed copy of SPSS, [which can be
+purchased on IBM's
 website](https://www.ibm.com/products/spss-statistics/pricing).

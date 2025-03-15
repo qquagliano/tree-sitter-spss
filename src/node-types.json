@@ -91,6 +91,99 @@
     "fields": {}
   },
   {
+    "type": "data",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "data_source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "data_source",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression_out_subcommand",
+          "named": true
+        },
+        {
+          "type": "expression_source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_out_subcommand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "expression_out_subidentifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_source",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "gpl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "gpl_source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "gpl_source",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "identifier",
     "named": true,
     "fields": {}
@@ -204,7 +297,27 @@
           "named": true
         },
         {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "data",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "gpl",
+          "named": true
+        },
+        {
           "type": "injection",
+          "named": true
+        },
+        {
+          "type": "transformation",
           "named": true
         }
       ]
@@ -237,6 +350,59 @@
     }
   },
   {
+    "type": "transformation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "transformation_out_subcommand",
+          "named": true
+        },
+        {
+          "type": "transformation_source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "transformation_out_subcommand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "transformation_out_subidentifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "transformation_source",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "&",
     "named": false
   },
@@ -262,6 +428,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {
@@ -397,11 +567,7 @@
     "named": false
   },
   {
-    "type": "BEGIN EXPR-END EXPR",
-    "named": false
-  },
-  {
-    "type": "BEGIN GPL-END GPL",
+    "type": "BEGIN GPL",
     "named": false
   },
   {
@@ -633,7 +799,19 @@
     "named": false
   },
   {
+    "type": "END DATA.",
+    "named": false
+  },
+  {
+    "type": "END EXPR.",
+    "named": false
+  },
+  {
     "type": "END FILE",
+    "named": false
+  },
+  {
+    "type": "END GPL.",
     "named": false
   },
   {
@@ -1313,6 +1491,10 @@
     "named": false
   },
   {
+    "type": "SIMPREP END.",
+    "named": false
+  },
+  {
     "type": "SIMRUN",
     "named": false
   },
@@ -1413,7 +1595,7 @@
     "named": false
   },
   {
-    "type": "TMS END",
+    "type": "TMS END.",
     "named": false
   },
   {
@@ -1553,6 +1735,10 @@
     "named": true
   },
   {
+    "type": "expression_out_subidentifier",
+    "named": true
+  },
+  {
     "type": "keyword",
     "named": true
   },
@@ -1574,6 +1760,10 @@
   },
   {
     "type": "subidentifier",
+    "named": true
+  },
+  {
+    "type": "transformation_out_subidentifier",
     "named": true
   },
   {

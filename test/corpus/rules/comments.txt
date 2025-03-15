@@ -3,13 +3,25 @@ Comments
 ==================
 
 * test comment 1
-/* test comment 2
+
+* test comment 2.
+
 COMMENT test comment 3.
+
+
+COMMENT test comment 3.
+
+* test comment 1
+
+* test comment 2.
 
 ---
 
 (source_file
- (comment)
- (comment)
- (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
 )

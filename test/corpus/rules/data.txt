@@ -1,0 +1,20 @@
+==================
+Data blocks
+==================
+
+BEGIN DATA
+END DATA.
+
+BEGIN DATA
+1  3424  274 ABU DHABI 2
+2 39932   86 AMSTERDAM 4
+END DATA.
+
+---
+
+(source_file
+  (data)
+  (data
+    (data_source)
+  )
+)

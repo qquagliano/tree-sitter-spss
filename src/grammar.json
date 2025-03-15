@@ -13,7 +13,27 @@
           },
           {
             "type": "SYMBOL",
+            "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "data"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "gpl"
+          },
+          {
+            "type": "SYMBOL",
             "name": "injection"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "transformation"
           }
         ]
       }
@@ -311,22 +331,6 @@
         {
           "type": "STRING",
           "value": "BAYES REPEATED"
-        },
-        {
-          "type": "STRING",
-          "value": "BEGIN DATA"
-        },
-        {
-          "type": "STRING",
-          "value": "BEGIN EXPR"
-        },
-        {
-          "type": "STRING",
-          "value": "BEGIN EXPR-END EXPR"
-        },
-        {
-          "type": "STRING",
-          "value": "BEGIN GPL-END GPL"
         },
         {
           "type": "STRING",
@@ -1282,10 +1286,6 @@
         },
         {
           "type": "STRING",
-          "value": "SIMPREP BEGIN"
-        },
-        {
-          "type": "STRING",
           "value": "SIMRUN"
         },
         {
@@ -1391,14 +1391,6 @@
         {
           "type": "STRING",
           "value": "TITLE"
-        },
-        {
-          "type": "STRING",
-          "value": "TMS BEGIN"
-        },
-        {
-          "type": "STRING",
-          "value": "TMS END"
         },
         {
           "type": "STRING",
@@ -1669,24 +1661,15 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "\\* "
+                "value": "\\*"
               },
               {
                 "type": "PATTERN",
                 "value": "[^\\n]*"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "\\/\\* "
               },
               {
                 "type": "PATTERN",
-                "value": "[^\\n]*"
+                "value": "\\."
               }
             ]
           },
@@ -1700,10 +1683,189 @@
               {
                 "type": "PATTERN",
                 "value": "[^\\n]*"
+              },
+              {
+                "type": "PATTERN",
+                "value": "\\."
               }
             ]
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\*[^.]*?\\n\\s*\\n"
           }
         ]
+      }
+    },
+    "data": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "BEGIN DATA"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "data_source"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "END DATA."
+        }
+      ]
+    },
+    "data_source": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\n]+"
+      }
+    },
+    "expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "BEGIN EXPR"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "expression_out_subcommand"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "expression_source"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": "END EXPR."
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "SIMPREP BEGIN"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "expression_out_subcommand"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "expression_source"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": "SIMPREP END."
+            }
+          ]
+        }
+      ]
+    },
+    "expression_out_subcommand": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expression_out_subidentifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arguments"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        }
+      ]
+    },
+    "expression_out_subidentifier": {
+      "type": "STRING",
+      "value": "/OUTFILE"
+    },
+    "expression_source": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "command"
+      }
+    },
+    "gpl": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "BEGIN GPL"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "gpl_source"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "END GPL."
+        }
+      ]
+    },
+    "gpl_source": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\n]+"
       }
     },
     "injection": {
@@ -1764,13 +1926,74 @@
         "type": "PATTERN",
         "value": "[^\\n]+"
       }
+    },
+    "transformation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "TMS BEGIN"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "transformation_out_subcommand"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "transformation_source"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "TMS END."
+        }
+      ]
+    },
+    "transformation_out_subcommand": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "transformation_out_subidentifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arguments"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        }
+      ]
+    },
+    "transformation_out_subidentifier": {
+      "type": "STRING",
+      "value": "/DESTINATION"
+    },
+    "transformation_source": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "command"
+      }
     }
   },
   "extras": [
-    {
-      "type": "SYMBOL",
-      "name": "comment"
-    },
     {
       "type": "PATTERN",
       "value": "\\s"
@@ -1780,5 +2003,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
