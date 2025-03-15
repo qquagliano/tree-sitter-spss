@@ -18,7 +18,6 @@
 (data_source) @variable ; for bolded white highlighting
 
 (expression) @function
-(expression_out_subcommand) @variable
 (expression_out_subidentifier) @keyword ; for normal subcommand highlighting
 
 (gpl) @function
@@ -29,6 +28,5 @@
 (injection_source) @none ; This is "transparent" to allow for the inject lang
 
 (transformation) @function
-(transformation_out_subcommand) @variable
 (transformation_out_subidentifier) @keyword
 
