@@ -14,27 +14,21 @@
 
 ; SECTION: Special command types with their own blocks
 
-(data
-  (data_source) @variable ; for plain white highlighting
-) @function ; for normal command highlighting
+(data) @function ; for normal command highlighting
+(data_source) @variable ; for bolded white highlighting
 
-(expression
-  (expression_out_subcommand
-    (expression_out_subidentifier) @keyword ; for normal subcommand highlighting
-  ) @variable
-) @function
+(expression) @function
+(expression_out_subcommand) @variable
+(expression_out_subidentifier) @keyword ; for normal subcommand highlighting
 
-(gpl
-  (gpl_source) @variable
-) @function
+(gpl) @function
+(gpl_source) @variable
 
-(injection
-  (language) @variable
-  (injection_source) @none ; This is "transparent" to allow for the inject lang
-) @function
+(injection) @function
+(language) @variable
+(injection_source) @none ; This is "transparent" to allow for the inject lang
 
-(transformation
-  (transformation_out_subcommand
-    (transformation_out_subidentifier) @keyword
-  ) @variable
-) @function
+(transformation) @function
+(transformation_out_subcommand) @variable
+(transformation_out_subidentifier) @keyword
+
