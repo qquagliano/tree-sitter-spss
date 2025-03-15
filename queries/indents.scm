@@ -7,7 +7,7 @@
 ; SECTION: Special command types with their own blocks
 
 (expression) @indent.begin
-(expression_out_subcommand) @indent.end
+(expression_source) @indent.zero
 (transformation) @indent.begin
-(transformation_out_subcommand) @indent.end
+(transformation_source) @indent.zero
 
