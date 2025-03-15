@@ -13,14 +13,18 @@ END EXPR.
 ---
 
 (source_file
-  (expression)
   (expression
-    (expression_out_subcommand
-      (expression_out_subidentifier)
-      (arguments
-        (keyword)
-        (comparison)
-        (string)
+    (expression_out_start)
+  )
+  (expression
+    (expression_out_start
+      (expression_out_subcommand
+        (expression_out_subidentifier)
+        (arguments
+          (keyword)
+          (comparison)
+          (string)
+        )
       )
     )
     (expression_source

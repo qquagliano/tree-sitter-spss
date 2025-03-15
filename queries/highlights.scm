@@ -4,7 +4,7 @@
 
 ; SECTION: Misc nodes
 
-(arguments) @character
+(arguments) @markup.raw
 (string) @string
 (number) @number
 

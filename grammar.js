@@ -533,18 +533,25 @@ module.exports = grammar({
     expression: $ => choice(
       // NOTE: This is the modern, supported method
       seq(
-        "BEGIN EXPR",
-        optional($.expression_out_subcommand),
+        $.expression_out_start,
         optional($.expression_source),
         "END EXPR."
       ),
       // NOTE: This is deprecated since SPSS v23, but is still likely used
       seq(
-        "SIMPREP BEGIN",
-        optional($.expression_out_subcommand),
+        $.expression_out_start,
         optional($.expression_source),
         "SIMPREP END."
       )
+    ),
+
+    // NOTE: Split out for better indent control
+    expression_out_start: $ => seq(
+      choice(
+        "BEGIN EXPR",
+        "SIMPREP BEGIN"
+      ),
+      optional($.expression_out_subcommand),
     ),
 
     /*
@@ -648,10 +655,15 @@ module.exports = grammar({
     */
 
     transformation: $ => seq(
-      "TMS BEGIN",
-      optional($.transformation_out_subcommand),
+      $.transformation_out_start,
       optional($.transformation_source),
       "TMS END."
+    ),
+
+    // NOTE: Split out for better indent control
+    transformation_out_start: $ => seq(
+      "TMS BEGIN",
+      optional($.transformation_out_subcommand),
     ),
 
     /*

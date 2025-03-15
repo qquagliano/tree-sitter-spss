@@ -116,14 +116,29 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "expression_out_subcommand",
+          "type": "expression_out_start",
           "named": true
         },
         {
           "type": "expression_source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_out_start",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "expression_out_subcommand",
           "named": true
         }
       ]
@@ -355,14 +370,29 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "transformation_out_subcommand",
+          "type": "transformation_out_start",
           "named": true
         },
         {
           "type": "transformation_source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "transformation_out_start",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "transformation_out_subcommand",
           "named": true
         }
       ]

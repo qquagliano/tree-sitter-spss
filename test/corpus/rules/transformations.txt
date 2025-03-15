@@ -13,14 +13,18 @@ TMS END.
 ---
 
 (source_file
-  (transformation)
   (transformation
-    (transformation_out_subcommand
-      (transformation_out_subidentifier)
-      (arguments
-        (keyword)
-        (comparison)
-        (string)
+    (transformation_out_start)
+  )
+  (transformation
+    (transformation_out_start
+      (transformation_out_subcommand
+        (transformation_out_subidentifier)
+        (arguments
+          (keyword)
+          (comparison)
+          (string)
+        )
       )
     )
     (transformation_source
