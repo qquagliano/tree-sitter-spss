@@ -4,7 +4,7 @@
 
 ; SECTION: Misc nodes
 
-(arguments) @variable
+(arguments) @character
 (string) @string
 (number) @number
 
