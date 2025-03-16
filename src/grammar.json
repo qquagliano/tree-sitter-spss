@@ -1736,8 +1736,20 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "expression_out_start"
+              "type": "STRING",
+              "value": "BEGIN EXPR"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "expression_out_subcommand"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
             {
               "type": "CHOICE",
@@ -1761,8 +1773,20 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "expression_out_start"
+              "type": "STRING",
+              "value": "SIMPREP BEGIN"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "expression_out_subcommand"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
             {
               "type": "CHOICE",
@@ -1779,36 +1803,6 @@
             {
               "type": "STRING",
               "value": "SIMPREP END."
-            }
-          ]
-        }
-      ]
-    },
-    "expression_out_start": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "BEGIN EXPR"
-            },
-            {
-              "type": "STRING",
-              "value": "SIMPREP BEGIN"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "expression_out_subcommand"
-            },
-            {
-              "type": "BLANK"
             }
           ]
         }
@@ -1937,8 +1931,20 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "transformation_out_start"
+          "type": "STRING",
+          "value": "TMS BEGIN"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "transformation_out_subcommand"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -1955,27 +1961,6 @@
         {
           "type": "STRING",
           "value": "TMS END."
-        }
-      ]
-    },
-    "transformation_out_start": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "TMS BEGIN"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "transformation_out_subcommand"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
         }
       ]
     },
