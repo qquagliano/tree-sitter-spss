@@ -159,6 +159,30 @@
         {
           "type": "command",
           "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "data",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "gpl",
+          "named": true
+        },
+        {
+          "type": "injection",
+          "named": true
+        },
+        {
+          "type": "transformation",
+          "named": true
         }
       ]
     }
@@ -397,6 +421,30 @@
       "types": [
         {
           "type": "command",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "data",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "gpl",
+          "named": true
+        },
+        {
+          "type": "injection",
+          "named": true
+        },
+        {
+          "type": "transformation",
           "named": true
         }
       ]

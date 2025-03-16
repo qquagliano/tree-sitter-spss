@@ -1828,8 +1828,37 @@
     "expression_source": {
       "type": "REPEAT1",
       "content": {
-        "type": "SYMBOL",
-        "name": "command"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "command"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "data"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "gpl"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "injection"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "transformation"
+          }
+        ]
       }
     },
     "gpl": {
@@ -1984,8 +2013,37 @@
     "transformation_source": {
       "type": "REPEAT1",
       "content": {
-        "type": "SYMBOL",
-        "name": "command"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "command"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "data"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "gpl"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "injection"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "transformation"
+          }
+        ]
       }
     }
   },

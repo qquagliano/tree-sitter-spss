@@ -1,0 +1,27 @@
+  rules:
+    comments:
+        1. ✓ [32mComments[0m
+    data:
+        2. ✓ [32mData blocks[0m
+    expressions:
+        3. ✓ [32mExpression blocks[0m
+    gpl:
+        4. ✓ [32mGPL blocks[0m
+    injections:
+        5. ✓ [32mInjection blocks[0m
+    source_file_base:
+        6. ✓ [32mSource file base[0m
+    transformations:
+        7. ✓ [32mTransformation blocks[0m
+
+Total parses: 7; successful parses: 7; failed parses: 0; success percentage: 100.00%; average speed: 112 bytes/ms
+
+syntax highlighting:
+    ✓ [32msource_file_base.sps[0m (0 assertions)
+    ✓ [32mtransformations.sps[0m (0 assertions)
+    ✓ [32mexpressions.sps[0m (0 assertions)
+    ✓ [32mgpl.sps[0m (0 assertions)
+    ✓ [32mcomments.sps[0m (6 assertions)
+    ✗ [31mdata.sps[0m
+      Failure - row: 8, column: 0, expected highlight 'function', actual highlights: none.
+    ✓ [32minjections.sps[0m (0 assertions)

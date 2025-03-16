@@ -1,41 +1,16 @@
-==================
-Transformation blocks
-==================
-
 TMS BEGIN
+* <- function .
+* ^    ^ function .
 TMS END.
 
 TMS BEGIN
+* <- function .
+* ^   ^  function .
   /DESTINATION OUTFILE='/mydir/mytransformations.xml'.
+* ^ keyword .
+*              ^      ^ variable .
+*                        ^ string .
 COMPUTE modelvar=ln(var).
+* ^ function .
+*       ^ variable .
 TMS END.
-
----
-
-(source_file
-  (transformation)
-  (transformation
-    (transformation_out_subcommand
-      (transformation_out_subidentifier)
-      (arguments
-        (keyword)
-        (comparison)
-        (string)
-      )
-    )
-    (transformation_source
-      (command
-        (identifier)
-        (arguments
-          (variable)
-          (comparison)
-          (variable)
-          (parenthetical
-            (variable) 
-          )
-        )
-      (end_of_command)
-      )
-    )
-  )
-)

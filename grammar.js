@@ -564,9 +564,15 @@ module.exports = grammar({
     structure for those (almost like a language embedded within itself)
     */
 
-    expression_source: $ => repeat1(
-      $.command
-    ),
+    expression_source: $ => repeat1(choice(
+      $.command,
+      $.comment,
+      $.data,
+      $.expression,
+      $.gpl,
+      $.injection,
+      $.transformation
+    )),
 
     // SECTION: Graphics Protocol Language (GPL) - for creating graphs
 
@@ -671,9 +677,15 @@ module.exports = grammar({
     node structure for those (almost like a language embedded within itself)
     */
 
-    transformation_source: $ => repeat1(
-      $.command
-    ),
+    transformation_source: $ => repeat1(choice(
+      $.command,
+      $.comment,
+      $.data,
+      $.expression,
+      $.gpl,
+      $.injection,
+      $.transformation
+    )),
 
   },
 

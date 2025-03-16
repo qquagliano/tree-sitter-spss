@@ -1,39 +1,17 @@
-==================
-Expression blocks
-==================
-
 BEGIN EXPR
+* <- function .
+* ^ ^   ^ function .
 END EXPR.
 
 BEGIN EXPR
+* <- function .
+* ^    ^ function .
   /OUTFILE PREPXML='filespec'.
+* ^ keyword .
+*          ^      ^ variable .
+*                  ^ ^      ^ string .
 COMPUTE revenue = price*volume.
+* ^ ^ function .
+*       ^       ^ variable .
+*                 ^    ^    ^ variable .
 END EXPR.
-
----
-
-(source_file
-  (expression)
-  (expression
-    (expression_out_subcommand
-      (expression_out_subidentifier)
-      (arguments
-        (keyword)
-        (comparison)
-        (string)
-      )
-    )
-    (expression_source
-      (command
-        (identifier)
-        (arguments
-          (variable)
-          (comparison)
-          (variable)
-          (arithmetic)
-          (variable))
-      (end_of_command)
-      )
-    )
-  )
-)
