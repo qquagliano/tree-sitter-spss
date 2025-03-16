@@ -627,10 +627,6 @@
     "named": false
   },
   {
-    "type": "COMMENT",
-    "named": false
-  },
-  {
     "type": "COMPARE DATASETS",
     "named": false
   },

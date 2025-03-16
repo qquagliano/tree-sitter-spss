@@ -386,10 +386,6 @@
         },
         {
           "type": "STRING",
-          "value": "COMMENT"
-        },
-        {
-          "type": "STRING",
           "value": "COMPARE DATASETS"
         },
         {
@@ -1692,7 +1688,7 @@
           },
           {
             "type": "PATTERN",
-            "value": "\\*[^.]*?\\n\\s*\\n"
+            "value": "\\*[^.]*?\\n[ \\t]*\\n"
           }
         ]
       }

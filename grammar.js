@@ -141,7 +141,6 @@ module.exports = grammar({
       "CLUSTER",
       "CNLR",
       "CODEBOOK",
-      "COMMENT",
       "COMPARE DATASETS",
       "COMPUTE",
       "CONJOINT",
@@ -497,7 +496,7 @@ module.exports = grammar({
       // For command-initiated comments, ending in period
       seq('COMMENT', /[^\n]*/, /\./),
       // For asterisk-initiated comments, ending in blank line w/o period
-      /\*[^.]*?\n\s*\n/
+      /\*[^.]*?\n[ \t]*\n/
     )),
 
     // SECTION: SPSS Created Data

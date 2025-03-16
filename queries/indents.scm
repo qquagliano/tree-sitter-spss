@@ -4,10 +4,7 @@
 ; This catches the /.\n/ and accounts for single line commands:
 (end_of_command) @indent.end
 
-; SECTION: Special command types with their own blocks
+; TODO: Special command types with their own required subcommands
 
 (expression) @indent.begin
-(expression_source) @indent.ignore @indent.branch
-
 (transformation) @indent.begin
-(expression_source) @indent.ignore @indent.branch

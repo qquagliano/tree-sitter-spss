@@ -1,0 +1,41 @@
+==================
+Transformation blocks
+==================
+
+TMS BEGIN
+TMS END.
+
+TMS BEGIN
+  /DESTINATION OUTFILE='/mydir/mytransformations.xml'.
+COMPUTE modelvar=ln(var).
+TMS END.
+
+---
+
+(source_file
+  (transformation)
+  (transformation
+    (transformation_out_subcommand
+      (transformation_out_subidentifier)
+      (arguments
+        (keyword)
+        (comparison)
+        (string)
+      )
+    )
+    (transformation_source
+      (command
+        (identifier)
+        (arguments
+          (variable)
+          (comparison)
+          (variable)
+          (parenthetical
+            (variable) 
+          )
+        )
+      (end_of_command)
+      )
+    )
+  )
+)
